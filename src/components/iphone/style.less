@@ -1,0 +1,91 @@
+@import '~style/helpers';
+
+.container { 
+	display: flex;
+	flex-direction: column;
+	background-image: url('../../assets/backgrounds/clear-iphone.jpg');
+	color: #fff;
+	width: 414px;
+	height: 736px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.header {
+	left: 0;
+	top: 0;
+	width: 414px;
+	height: 56px;
+	padding: 0;
+	background: #673AB7;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+	z-index: 50;
+
+	h1 {
+		float: left;
+		margin: 0;
+		padding: 0 15px;
+		font-size: 24px;
+		line-height: 56px;
+		font-weight: 400;
+		color: #FFF;
+	}
+
+	nav {
+		float: right;
+		font-size: 100%;
+
+		a {
+			display: inline-block;
+			height: 56px;
+			line-height: 56px;
+			padding: 0 15px;
+			min-width: 50px;
+			text-align: center;
+			background: rgba(255,255,255,0);
+			text-decoration: none;
+			color: #EEE;
+			will-change: background-color;
+
+			&:hover, &:active {
+				background: rgba(255,255,255,0.3);
+			}
+		}
+	}
+}
+
+.display {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	padding-top: 80px;
+
+}
+.details {
+	flex: 4;
+}
+.city {
+	flex: 1;
+	font-size: 1.7em;
+	font-weight: 400;	
+}
+.conditions {
+	flex: 1;
+	font-size: 1em;
+}
+.temperature {
+	flex: 2;
+	margin-top: 0;
+	font-size: 4.8em;
+	font-weight: 300;
+	letter-spacing: 0px;
+}
+.filled:after {
+	content: "°";
+	margin: 0 0 0 1rem;
+	font-size: 0.5em;
+	font-weight: 100;
+	display: inline-block;
+	padding-top: 10px;
+	vertical-align: top;
+}
