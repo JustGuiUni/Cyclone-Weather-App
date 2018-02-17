@@ -1,11 +1,12 @@
 // import preact
 import { h, render, Component } from 'preact';
-// import stylesheets for ipad & button
+// import stylesheets for iphone, button
 import style from './style';
 import style_iphone from '../button/style_iphone';
+import style_topnav from '../topnav/style_topnav';
 // import jquery for API calls
 import $ from 'jquery';
-// import the Button component
+// import the Button
 import Button from '../button';
 
 export default class Iphone extends Component {
@@ -20,7 +21,7 @@ export default class Iphone extends Component {
 		this.setState({ display: true });
 	}
 
-	// a call to fetch weather data via wunderground
+	// a call to fetch weather data via open weather map
 	fetchWeatherData = () => {
 		var lat = "51.5240670"
 		var lon = "-0.0403740"
@@ -40,21 +41,26 @@ export default class Iphone extends Component {
 		// check if temperature data is fetched, if so add the sign styling to the page
 		const tempStyles = this.state.temp ? `${style.temperature} ${style.filled}` : style.temperature;
 		
-		// display all weather data
+		// topnav element links to an external stylesheet 'font awesome' that includes icons
+		// allows icon for any element to be set with the following syntax: <i class ="fa fa-ICONNAME"></i>
 		return (
 			<div class={ style.container }>
-				<div class={ style.header}>
-					<nav>
-						<a>Test</a>
-						<a>Test</a>
-						<a>Test</a>
-					</nav>
+				
+				<div class={ style_topnav.container }>
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>	
+					<button-left><a><i class="fa fa-bullseye"></i></a></button-left>
+					<input type="text" placeholder="Search.."></input>
+					<button-left><a><i class="fa fa-search"></i></a></button-left>	
+					<button-right><a><i class="fa fa-cog"></i></a></button-right>	
 				</div>
+
 				<div class={ style.display }>
 					<div class={ style.city }>{ this.state.locate }</div>
 					<div class={ style.conditions }>{ this.state.cond }</div>
 					<span class={ tempStyles }>{ this.state.temp }</span>
 				</div>
+
+
 				<div class={ style.details }></div>
 				<div class= { style_iphone.container }> 
 					{ this.state.display ? <Button class={ style_iphone.button } clickFunction={ this.fetchWeatherData }/ > : null }
