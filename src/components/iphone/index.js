@@ -26,7 +26,7 @@ export default class Iphone extends Component {
 	}
 
 	// a call to fetch weather data via open weather map
-	fetchWeatherData = (lat,lon) => {
+	fetchWeatherData = () => {
 
 		var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=fb1dc4da37f9e2330043b353f437dea9";
 		$.ajax({
@@ -40,9 +40,7 @@ export default class Iphone extends Component {
 
 	}
 
-		// The below section sets up a listener on the text input and the search button, takes that data
-		// and sends an API call to poscodes.io, parses the response data and puts the relevant data into variables.
-		// This is all done on the client side. 
+	// The below function makes a call to postcodes.io based on the postcode value inputed by the user. This function also then calls the fetchWeatherData.
 
 	postcodeSearch = () =>{
 		
@@ -63,10 +61,11 @@ export default class Iphone extends Component {
 
 		console.log(this.state.lat);
 
-		this.fetchWeatherData(this.state.lat,this.state.lon);
+		this.fetchWeatherData();
 
 	}
 
+	// This function reads data from the text input on any update and sets the class variable postcode to that value. 
 	updateInputValue(evt){
 	    this.state.postcodeVal = evt.target.value;
 	    console.log(this.state.postcodeVal);
@@ -86,7 +85,7 @@ export default class Iphone extends Component {
 				<div class={ style_topnav.container }>
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>	
 					<button-left><a><i class="fa fa-bullseye"></i></a></button-left>
-					<input type="text" placeholder="Please put in your postcode..." id="searchField"  onChange={this.updateInputValue}></input>
+					<input type="text" placeholder="Postcode..." id="searchField"  onChange={this.updateInputValue}></input>
 					<button-left onClick={() => this.postcodeSearch()} ><a><i class="fa fa-search" id="searchButton"></i></a></button-left>	
 					<button-right><a><i class="fa fa-cog"></i></a></button-right>	
 				</div>
