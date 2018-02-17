@@ -15,17 +15,20 @@ export default class Iphone extends Component {
 	// a constructor with initial set states
 	constructor(props){
 		super(props);
-		// temperature state
+		// temperature, long, lat initialise state
 		this.state.temp = "";
+		this.state.lon = "-0.03749985";
+		this.state.lat = "51.520497918";
+		// this.state.postcodeVal = "";
 		// button display state
 		this.setState({ display: true });
+		this.updateInputValue = this.updateInputValue.bind(this);
 	}
 
 	// a call to fetch weather data via open weather map
-	fetchWeatherData = () => {
-		var lat = "51.5240670"
-		var lon = "-0.0403740"
-		var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=fb1dc4da37f9e2330043b353f437dea9";
+	fetchWeatherData = (lat,lon) => {
+
+		var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=fb1dc4da37f9e2330043b353f437dea9";
 		$.ajax({
 			url: url,
 			dataType: "json",
@@ -34,23 +37,17 @@ export default class Iphone extends Component {
 		})
 		// once the data grabbed, hide the button
 		this.setState({ display: false });
+
 	}
 
-	// the main render method for the iphone component
-	render() {
-		// check if temperature data is fetched, if so add the sign styling to the page
-		const tempStyles = this.state.temp ? `${style.temperature} ${style.filled}` : style.temperature;
-		
-		
 		// The below section sets up a listener on the text input and the search button, takes that data
 		// and sends an API call to poscodes.io, parses the response data and puts the relevant data into variables.
 		// This is all done on the client side. 
 
-		var postcode = ""
-
-		$( document.getElementById('searchButton') ).click(function() {
-		 postcode = document.getElementById('searchField').value;
-		 console.log(postcode);
+	postcodeSearch = () =>{
+		
+		var postcode = this.state.postcodeVal;
+		console.log(postcode);
 
 		var url = "https://api.postcodes.io/postcodes/" + postcode;
 
@@ -61,12 +58,26 @@ export default class Iphone extends Component {
 
 		var JSONresponse = JSON.parse(xhr.responseText);
 
-		var lon = JSONresponse['result']['longitude'];
-		var lat = JSONresponse['result']['latitude'];
+		this.state.lon = JSONresponse['result']['longitude'];
+		this.state.lat = JSONresponse['result']['latitude'];
+
+		console.log(this.state.lat);
+
+		this.fetchWeatherData(this.state.lat,this.state.lon);
+
+	}
+
+	updateInputValue(evt){
+	    this.state.postcodeVal = evt.target.value;
+	    console.log(this.state.postcodeVal);
+	}
 
 
-		});
-		
+	// the main render method for the iphone component
+	render() {
+		// check if temperature data is fetched, if so add the sign styling to the page
+		const tempStyles = this.state.temp ? `${style.temperature} ${style.filled}` : style.temperature;
+				
 		// topnav element links to an external stylesheet 'font awesome' that includes icons
 		// allows icon for any element to be set with the following syntax: <i class ="fa fa-ICONNAME"></i>
 		return (
@@ -75,8 +86,8 @@ export default class Iphone extends Component {
 				<div class={ style_topnav.container }>
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>	
 					<button-left><a><i class="fa fa-bullseye"></i></a></button-left>
-					<input type="text" placeholder="Please put in your postcode..." id="searchField"></input>
-					<button-left><a><i class="fa fa-search" id="searchButton"></i></a></button-left>	
+					<input type="text" placeholder="Please put in your postcode..." id="searchField"  onChange={this.updateInputValue}></input>
+					<button-left onClick={() => this.postcodeSearch()} ><a><i class="fa fa-search" id="searchButton"></i></a></button-left>	
 					<button-right><a><i class="fa fa-cog"></i></a></button-right>	
 				</div>
 
