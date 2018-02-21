@@ -1,56 +1,56 @@
 @import '~style/helpers';
 
 .container{
+	position: relative;
 	left: 0;
 	top: 0;
-	width: 414px;
-	height: 56px;
+	height: 70px;
 	padding: 0;
 	background: #673AB7;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-	z-index: 50;
 
 	button-left {
 		float: left;
 		display: inline-block;
-		height: 56px;
-		line-height: 56px;
+		height: 70px;
+		line-height: 70px;
 		padding: 0 15px;
 		min-width: 50px;
+		font-size: 1.5em;
 		text-align: center;
-		background: rgba(255,255,255,0);
-		text-decoration: none;
+		background: #673AB7;
 		color: #EEE;
 		will-change: background-color;
 
 		&:hover, &:active {
-			background: rgba(255,255,255,0.3);
+			background: #966fd6;
 		}	
 	}
 
 	button-right {
 		float: right;
 		display: inline-block;
-		height: 56px;
-		line-height: 56px;
+		height: 70px;
+		line-height: 70px;
 		padding: 0 15px;
 		min-width: 50px;
+		font-size: 1.5em;
 		text-align: center;
-		background: rgba(255,255,255,0);
-		text-decoration: none;
+		background: #673AB7;
 		color: #EEE;
 		will-change: background-color;
 
 		&:hover, &:active {
-			background: rgba(255,255,255,0.3);
+			background: #966fd6;
 		}
 	}
 
 	input[type=text]{
 		float: left;
 	    padding: 8px;
+	    min-width: 260px;
 	    border: none;
-	    margin-top: 12px;
+	    margin-top: 19px;
 	    margin-bottom: 12px;
 	    border-radius: 15px;
 	}

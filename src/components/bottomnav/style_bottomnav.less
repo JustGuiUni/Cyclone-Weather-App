@@ -1,0 +1,28 @@
+@import '~style/helpers';
+
+.container{
+	position: relative;
+	left: 0;
+	bottom: 0;
+	height: 70px;
+	padding: 0;
+	background: #673AB7;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+
+	bottom-button {
+		display: inline-block;
+		height: 70px;
+		line-height: 70px;
+		min-width: 103px;
+		font-size: 1.5em;
+		text-align: center;
+		background: #673AB7;
+		text-decoration: none;
+		color: #EEE;
+		will-change: background-color;
+
+		&:hover, &:active {
+			background: #966fd6;
+		}	
+	}
+}

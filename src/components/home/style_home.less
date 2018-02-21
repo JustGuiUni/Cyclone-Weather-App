@@ -1,0 +1,65 @@
+@import '~style/helpers';
+
+.container{
+	position: relative;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	left: 0;
+	top: 0;
+	background: #673AB7;
+
+	current {
+		display: inline-block;
+		height: 300px;
+		min-width: 414px;
+		background: #966fd6;
+		color: #EEE;
+
+		weather-location {
+			display: inline-block;
+			height: 60px;
+			line-height: 60px;
+			min-width: 414px;
+			font-size: 1.5em;
+			text-align: center;
+		}
+
+		weather-icon {
+			float: left;
+			height: 240px;
+			line-height: 37px;
+			font-size: 1.5em;
+			min-width: 207px;
+			background: #673AB7;
+		}
+
+		weather-text {
+			float: right;
+			height: 240px;
+			line-height: 50px;
+			padding-left: 20px;
+			font-size: 1.5em;
+			text-align: left;
+			min-width: 207px;
+			background: #673AB7;
+
+			sub-icon {
+				display: inline-block;
+				min-width: 50px;
+				text-align: center;
+			}
+		}
+	}
+
+	route {
+		display: inline-block;
+		height: 200px;
+		line-height: 70px;
+		padding: 0 15px;
+		min-width: 414px;
+		font-size: 1.5em;
+		text-align: center;
+		background: #77dd77;
+		color: #EEE;
+	}
+}
