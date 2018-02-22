@@ -55,11 +55,49 @@
 		display: inline-block;
 		height: 200px;
 		line-height: 70px;
-		padding: 0 15px;
 		min-width: 414px;
 		font-size: 1.5em;
 		text-align: center;
 		background: #77dd77;
 		color: #EEE;
+	
+		name {
+			display: inline-block;
+			float: left;
+			height: 60px;
+			line-height: 60px;
+			min-width: 349px;
+			text-align: center;
+			background: #966fd6;
+		}
+
+		dropdown {
+			display: inline-block;
+			position: relative;
+			float: left;
+			height: 60px;
+			min-width: 50px;
+			text-align: center;
+			background: #966fd6;
+		}
+
+		dropdown:before {
+			position: absolute;
+			font-family: 'FontAwesome';
+			text-align: center;
+			left: 15px;
+			top: -4px;
+			content: "\f13a";
+		}
+
+		test {
+			display: inline-block;
+			float: left;
+			height: 60px;
+			line-height: 60px;
+			min-width: 349px;
+			text-align: center;
+			background: #000000;
+		}
 	}
 }

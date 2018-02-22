@@ -9,10 +9,20 @@ import style_home from '../home/style_home';
 // import jquery for API calls
 import $ from 'jquery';
 // import the Button
-// import Button from '../button';
+import Button from '../button';
+import Relocate from '../topnav/relocate_index';
+import Search from '../topnav/search_index';
+import Route from '../home/route_index';
 
 export default class Iphone extends Component {
 //var Iphone = React.createClass({
+
+	componentDidMount() {
+	// fetch starting weather data
+	if (this.state.temp === "") {
+			this.fetchWeatherData();
+		}
+	}
 
 	// a constructor with initial set states
 	constructor(props){
@@ -21,6 +31,7 @@ export default class Iphone extends Component {
 		this.state.temp = "";
 		this.state.lon = "-0.03749985";
 		this.state.lat = "51.520497918";
+		this.state.icon = "";
 		// this.state.postcodeVal = "";
 		// button display state
 		// this.setState({ display: true });
@@ -37,8 +48,6 @@ export default class Iphone extends Component {
 			success : this.parseResponse,
 			error : function(req, err){ console.log('API call failed ' + err); }
 		})
-		// once the data grabbed, hide the button
-		// this.setState({ display: false });
 
 	}
 
@@ -50,53 +59,11 @@ export default class Iphone extends Component {
 		var wind_direction = parsed_json['wind']['deg'];
 		var conditions = parsed_json['weather'][0]['id'];
 
-		// Open Weather Map uses an id code to indicate weather conditions
-		// This if statement converts an id code into an English language description
-		if (200 <= conditions && conditions <= 232){
-			conditions = "Thunderstorm";
-		} else if (300 <= conditions && conditions <= 321){
-			conditions = "Drizzle";
-		} else if (conditions == 500 || conditions == 520){
-			conditions = "Light Rain";
-		} else if (conditions == 501 || conditions == 521){
-			conditions = "Moderate Rain";
-		} else if ((502 <= conditions && conditions <= 504) || (522 <= conditions && conditions <= 531)){
-			conditions = "Heavy Rain";
-		} else if (conditions == 511){
-			conditions = "Freezing Rain";
-		} else if (600 <= conditions && conditions <= 622){
-			conditions = "Snow";
-		} else if (701 == conditions) {
-			conditions = "Mist";
-		} else if (721 == conditions) {
-			conditions = "Haze";
-		} else if (741 == conditions) {
-			conditions = "Fog";
-		} else if (800 == conditions) {
-			conditions = "Clear Sky"
-		} else {
-			conditions = "Clouds";
-		}
-
-		// Open Weather Map uses degrees from North for wind direction
-		// This if statement converts degress from North into an 8-point-compass direction
-		if (22.5 < wind_direction <= 67.5) {
-			wind_direction = "NE";
-		} else if (67.5 < wind_direction <= 112.5) {
-			wind_direction = "E";
-		} else if (112.5 < wind_direction <= 157.5) {
-			wind_direction = "SE";
-		} else if (157.5 < wind_direction <= 202.5) {
-			wind_direction = "S";
-		} else if (202.5 < wind_direction <= 247.5) {
-			wind_direction = "SW";
-		} else if (247.5 < wind_direction <= 292.5) {
-			wind_direction = "W";
-		} else if (292.5 < wind_direction <= 337.5) {
-			wind_direction = "NW";
-		} else {
-			wind_direction = "N";
-		}
+		// call two additional helper functions to parse numeric values for wind direction and conditions into English
+		var cond_icon = this.parseConditions(conditions);
+		conditions = cond_icon[0];
+		this.state.icon = cond_icon[1];
+		wind_direction = this.parseWind(wind_direction);
 
 		// set states for fields so they could be rendered later on
 		this.setState({
@@ -108,9 +75,79 @@ export default class Iphone extends Component {
 		});      
 	}
 
+
+	// Open Weather Map uses an id code to indicate weather conditions
+	// This function converts an id code into an English language description and sets the appropriate icon
+	parseConditions = (c) => {
+		var i = "";
+
+		if (200 <= c && c <= 232){
+			c = "Thunderstorm";
+			i = "fa fa-bolt";
+		} else if (300 <= c && c <= 321){
+			c = "Drizzle";
+			i = "fa fa-tint";
+		} else if (c == 500 || c == 520){
+			c = "Light Rain";
+			i = "fa fa-tint";
+		} else if (c == 501 || c == 521){
+			c = "Moderate Rain";
+			i = "fa fa-tint";
+		} else if ((502 <= c && c <= 504) || (522 <= c && c <= 531)){
+			c = "Heavy Rain";
+			i = "fa fa-tin";
+		} else if (c == 511){
+			c = "Freezing Rain";
+			i = "fa fa-tint";
+		} else if (600 <= c && c <= 622){
+			c = "Snow";
+			i = "fa fa-snowflake";
+		} else if (701 == c) {
+			c = "Mist";
+			i = "fa fa-align-justify";
+		} else if (721 == c) {
+			c = "Haze";
+			i = "fa fa-align-justify";
+		} else if (741 == c) {
+			c = "Fog";
+			i = "fa fa-align-justify";
+		} else if (800 == c) {
+			c = "Clear Sky"
+			i = "fa fa-sun-o";
+		} else {
+			c = "Clouds";
+			i = "fa fa-cloud";
+		}
+		
+		return [c,i];
+	}
+
+	// Open Weather Map uses degrees from North for wind direction
+	// This function converts degress from North into an 8-point-compass direction
+	parseWind = (w) => {
+		if (22.5 < w <= 67.5) {
+			w = "NE";
+		} else if (67.5 < w <= 112.5) {
+			w = "E";
+		} else if (112.5 < w <= 157.5) {
+			w = "SE";
+		} else if (157.5 < w <= 202.5) {
+			w = "S";
+		} else if (202.5 < w <= 247.5) {
+			w = "SW";
+		} else if (247.5 < w <= 292.5) {
+			w = "W";
+		} else if (292.5 < w <= 337.5) {
+			w = "NW";
+		} else {
+			w = "N";
+		}
+
+		return w;		
+	}
+
 	// The below function makes a call to postcodes.io based on the postcode value inputed by the user. 
 	// It also then calls the fetchWeatherData function.
-
 	postcodeSearch = () =>{
 		
 		var postcode = this.state.postcodeVal;
@@ -141,20 +178,14 @@ export default class Iphone extends Component {
 	}
 
 	// Reset coordinates when user presses the crosshair button
-	resetCoordinates(){
+	resetCoordinates = () =>{
 		this.state.lon = "-0.03749985";
 		this.state.lat = "51.520497918";
 		this.fetchWeatherData();
 	}
 
-
 	// the main render method for the iphone component
 	render() {
-
-		// fetch starting weather data
-		if (this.state.temp === "") {
-			this.fetchWeatherData();
-		}
 				
 		return (
 			<div class={ style.container }>
@@ -167,38 +198,28 @@ export default class Iphone extends Component {
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>	
 					
 					{/* Reset coordinates when user presses the crosshair button */}
-					<button-left onClick={() => this.resetCoordinates()}><i class="fa fa-crosshairs"></i></button-left>
+					<Relocate clickFunction={ this.resetCoordinates }/>
 					
 					{/* Update text input and coordinates when user makes a search*/}
-					<input type="text" placeholder="Postcode..." id="searchField"  onChange={this.updateInputValue}></input>
-					<button-left onClick={() => this.postcodeSearch()} ><i class="fa fa-search" id="searchButton"></i></button-left>	
+					<input type="text" placeholder="Postcode..." id="searchField"  onChange ={ this.updateInputValue }></input>
+					<Search clickFunction ={ this.postcodeSearch } />	
 					
 					{/* Settings button has no functionality currently */}
-					<button-right><i class="fa fa-cog"></i></button-right>	
+					<buttonright><i class="fa fa-cog"></i></buttonright>	
 				</div>
 
-			{/* The component that displays the current weather */}
 				<div class ={ style_home.container }>
+
+					{/* The element that displays the current weather */}
 					<current>
 						<weather-location> {this.state.locate} </weather-location>
 						
-						{/* Determine which icon to use depending on current conditions */}
 						<weather-icon><br />
 							<div style="font-size: 120px;">
-								{this.state.cond == "Thunderstorm" ? <i class="fa fa-bolt"></i> : null}
-								{this.state.cond == "Drizzle" ? <i class="fa fa-tint"></i> : null}
-								{this.state.cond == "Light Rain" ? <i class="fa fa-tint"></i> : null}
-								{this.state.cond == "Moderate Rain" ? <i class="fa fa-tint"></i> : null}
-								{this.state.cond == "Heavy Rain" ? <i class="fa fa-tint"></i> : null}
-								{this.state.cond == "Freezing Rain" ? <i class="fa fa-tint"></i> : null}
-								{this.state.cond == "Snow" ? <i class="fa fa-snowflake"></i> : null}
-								{this.state.cond == "Mist" ? <i class="fa fa-align-justify"></i> : null}
-								{this.state.cond == "Haze" ? <i class="fa fa-align-justify"></i> : null}
-								{this.state.cond == "Fog" ? <i class="fa fa-align-justify"></i> : null}
-								{this.state.cond == "Clear Sky" ? <i class="fa fa-sun"></i> : null}
-								{this.state.cond == "Clouds" ? <i class="fa fa-cloud"></i> : null}
+								<i class= {this.state.icon}></i>
 							</div>
-						{this.state.cond} </weather-icon>
+							{this.state.cond}
+						</weather-icon>
 						
 						{/* Display temperature, wind speed, wind direction*/}
 						<weather-text> 
@@ -207,24 +228,12 @@ export default class Iphone extends Component {
 							<br /><sub-icon><i class="fa fa-compass"></i></sub-icon>{this.state.windd}
 						</weather-text>
 					</current>
-					<route></route>
-					<route></route>
-					<route></route>
+					
+					{/* Elements containing route weather information */}
+					<Route/>
+					<route><name>Gym</name><dropdown></dropdown></route>
+					<route><name>Home</name><dropdown></dropdown></route>
 				</div>
-
-				{/* Commenting out the boilerplate button
-				<div class={ style.display }>
-					<div class={ style.city }>{ this.state.locate }</div>
-					<div class={ style.conditions }>{ this.state.cond }</div>
-					<span class={ tempStyles }>{ this.state.temp }</span>
-				</div>
-
-
-				<div class={ style.details }></div>
-				<div class= { style_iphone.container }> 
-					{ this.state.display ? <Button class={ style_iphone.button } clickFunction={ this.fetchWeatherData }/ > : null }
-				</div>
-				*/}
 
 				{/* Bottom navigation bar. Not currently functional. Contains buttons linking home, hourly, route, and radar pages. */}
 				<div class={ style_bottomnav.container }>
