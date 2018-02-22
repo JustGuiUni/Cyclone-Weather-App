@@ -32,7 +32,7 @@ export default class Route extends Component {
 	fetchForecastData = () => {
 		this.state.cond1 = "function1";
 
-		var url = "api.openweathermap.org/data/2.5/forecast?lat=" + this.state.lat1 + "&lon=" + this.state.lon1 + "&appid=fb1dc4da37f9e2330043b353f437dea9";
+		var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.state.lat1 + "&lon=" + this.state.lon1 + "&appid=fb1dc4da37f9e2330043b353f437dea9";
 		$.ajax({
 			url: url,
 			dataType: "json",
