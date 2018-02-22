@@ -1,21 +1,20 @@
 // import preact
 import { h, render, Component } from 'preact';
-// import stylesheets for iphone, button, topnav, bottomnav
+// import stylesheets
 import style from './style';
-// import style_iphone from '../button/style_iphone';
 import style_topnav from '../topnav/style_topnav';
 import style_bottomnav from '../bottomnav/style_bottomnav';
 import style_home from '../home/style_home';
 // import jquery for API calls
 import $ from 'jquery';
-// import the Button
-import Button from '../button';
+// import components
 import Relocate from '../topnav/relocate_index';
 import Search from '../topnav/search_index';
-import Route from '../home/route_index';
+import Route1 from '../home/route1_index';
+import Route2 from '../home/route2_index';
+import Route3 from '../home/route3_index';
 
 export default class Iphone extends Component {
-//var Iphone = React.createClass({
 
 	componentDidMount() {
 	// fetch starting weather data
@@ -125,19 +124,19 @@ export default class Iphone extends Component {
 	// Open Weather Map uses degrees from North for wind direction
 	// This function converts degress from North into an 8-point-compass direction
 	parseWind = (w) => {
-		if (22.5 < w <= 67.5) {
+		if (22.5 < w && w <= 67.5) {
 			w = "NE";
-		} else if (67.5 < w <= 112.5) {
+		} else if (67.5 < w && w <= 112.5) {
 			w = "E";
-		} else if (112.5 < w <= 157.5) {
+		} else if (112.5 < w && w <= 157.5) {
 			w = "SE";
-		} else if (157.5 < w <= 202.5) {
+		} else if (157.5 < w && w <= 202.5) {
 			w = "S";
-		} else if (202.5 < w <= 247.5) {
+		} else if (202.5 < w && w <= 247.5) {
 			w = "SW";
-		} else if (247.5 < w <= 292.5) {
+		} else if (247.5 < w && w <= 292.5) {
 			w = "W";
-		} else if (292.5 < w <= 337.5) {
+		} else if (292.5 < w && w <= 337.5) {
 			w = "NW";
 		} else {
 			w = "N";
@@ -230,9 +229,9 @@ export default class Iphone extends Component {
 					</current>
 					
 					{/* Elements containing route weather information */}
-					<Route/>
-					<route><name>Gym</name><dropdown></dropdown></route>
-					<route><name>Home</name><dropdown></dropdown></route>
+					<Route1/>
+					<Route2/>
+					<Route3/>
 				</div>
 
 				{/* Bottom navigation bar. Not currently functional. Contains buttons linking home, hourly, route, and radar pages. */}

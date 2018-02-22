@@ -4,12 +4,14 @@ import $ from 'jquery';
 	
 export default class Route extends Component {
 
+	// check if weather data for the given route has been fetched
 	componentDidMount() {
 		if (this.state.temp1 === "") {
 			this.fetchForecastData();
 		}
 	}
 
+	// set initial values for the route
 	constructor(props){
 		super(props);
 		this.state.lon1 = "-0.0997446597109663";
@@ -21,17 +23,12 @@ export default class Route extends Component {
 		this.state.time1 = "06:00:00";
 		this.state.time2 = "09:00:00";
 		this.state.temp1 = "";
-		this.state.temp2 = "";
-		this.state.cond1 = "Temp";
-		this.state.cond2 = "";
-		this.state.icon1 = "";
-		this.state.icon2 = "";
+		this.state.count = 0;
 	}
 
-	// a call to fetch weather data via open weather map
+	// a call to fetch weather forecasts for each end of the route via open weather map
 	fetchForecastData = () => {
-		this.state.cond1 = "function1";
-
+		
 		var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.state.lat1 + "&lon=" + this.state.lon1 + "&appid=fb1dc4da37f9e2330043b353f437dea9";
 		$.ajax({
 			url: url,
@@ -40,37 +37,64 @@ export default class Route extends Component {
 			success : this.parseForecastResponse,
 			error : function(req, err){ console.log('API call failed ' + err); }
 		})
+
+		this.state.count =1;
+
+		url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.state.lat2 + "&lon=" + this.state.lon2 + "&appid=fb1dc4da37f9e2330043b353f437dea9";
+		$.ajax({
+			url: url,
+			dataType: "json",
+			async: false,
+			success : this.parseForecastResponse,
+			error : function(req, err){ console.log('API call failed ' + err); }
+		})
+
+		this.state.count =0;
 	}
 
-	// parse relevant fields from Open Weather Map API resposne, for later rendering
+	// parse relevant fields from Open Weather Map API response, for later rendering
 	parseForecastResponse = (parsed_json) => {
-		this.state.cond1 = "function2";
-		/*var forecast_list = parsed_json['list'][0];
+		var forecast_list = parsed_json['list'];
 
-		for (i = 0; i < forecast_list.length; i++) {
-			if (forecase_list[i].includes(this.state.time1)) {
-				var forecast = item;
-				break;
+		for (var i = 0; i < forecast_list.length; i++) {
+			if (this.state.count == 0) {
+				if ((forecast_list[i]['dt_txt']).indexOf(this.state.time1) > 0) {
+					var forecast = forecast_list[i];
+					break;
+				}
+			} else {
+				if ((forecast_list[i]['dt_txt']).indexOf(this.state.time2) > 0) {
+					var forecast = forecast_list[i];
+					break;
+				}
 			}
 		}
 
-		var temp_c = Math.round((parsed_json['main']['temp']-273.15) * 10) / 10;
-		var wind_speed = parsed_json['wind']['speed'];
-		var wind_direction = parsed_json['wind']['deg'];
-		var conditions = parsed_json['weather'][0]['id'];
+		var temp_c = Math.round((forecast['main']['temp']-273.15) * 10) / 10;
+		var wind_speed = forecast['wind']['speed'];
+		var wind_direction = forecast['wind']['deg'];
+		var conditions = forecast['weather'][0]['id'];
 
 		// call two additional helper functions to parse numeric values for wind direction and conditions into English
 		var cond_icon = this.parseConditions(conditions);
 		conditions = cond_icon[0];
-		this.state.icon1 = cond_icon[1];
+		var icon = cond_icon[1];
 		wind_direction = this.parseWind(wind_direction);
-		i1 = this.parseIcon(conditions);
 
 		// set states for fields so they could be rendered later on
-		this.state.temp1 = temp_c + "°";
-		this.state.cond1 = conditions;
-		this.state.winds1 = wind_speed + "m/s";
-		this.state.windd1 = wind_direction;*/      
+		if (this.state.count == 0) {
+			this.state.temp1 = temp_c + "°";
+			this.state.cond1 = conditions;
+			this.state.winds1 = wind_speed + "m/s";
+			this.state.windd1 = wind_direction;
+			this.state.icon1 = icon;
+		} else {
+			this.state.temp2 = temp_c + "°";
+			this.state.cond2 = conditions;
+			this.state.winds2 = wind_speed + "m/s";
+			this.state.windd2 = wind_direction;
+			this.state.icon2 = icon;
+		}      
 	}
 
 
@@ -111,7 +135,7 @@ export default class Route extends Component {
 			i = "fa fa-align-justify";
 		} else if (800 == c) {
 			c = "Clear Sky"
-			i = "fa fa-sun";
+			i = "fa fa-sun-o";
 		} else {
 			c = "Clouds";
 			i = "fa fa-cloud";
@@ -123,19 +147,19 @@ export default class Route extends Component {
 	// Open Weather Map uses degrees from North for wind direction
 	// This function converts degress from North into an 8-point-compass direction
 	parseWind = (w) => {
-		if (22.5 < w <= 67.5) {
+		if (22.5 < w && w <= 67.5) {
 			w = "NE";
-		} else if (67.5 < w <= 112.5) {
+		} else if (67.5 < w && w <= 112.5) {
 			w = "E";
-		} else if (112.5 < w <= 157.5) {
+		} else if (112.5 < w && w <= 157.5) {
 			w = "SE";
-		} else if (157.5 < w <= 202.5) {
+		} else if (157.5 < w && w <= 202.5) {
 			w = "S";
-		} else if (202.5 < w <= 247.5) {
+		} else if (202.5 < w && w <= 247.5) {
 			w = "SW";
-		} else if (247.5 < w <= 292.5) {
+		} else if (247.5 < w && w <= 292.5) {
 			w = "W";
-		} else if (292.5 < w <= 337.5) {
+		} else if (292.5 < w && w <= 337.5) {
 			w = "NW";
 		} else {
 			w = "N";
@@ -144,14 +168,21 @@ export default class Route extends Component {
 		return w;		
 	}
 
-	// rendering a function when the button is clicked
+	// The elements to render when this component mounts
 	render() {
 
 		return (
 			<route>
 				<name>Your Next Commute</name>
 				<dropdown></dropdown>
-				<test>{this.state.cond1}</test>
+				<route-text>{this.state.name1}: 8:00am</route-text>
+				<route-text>{this.state.name2}: 9:00am</route-text>
+				<block>a</block>
+				<route-icon><i class= {this.state.icon1}></i></route-icon>
+				<line/>
+				<route-icon><i class= {this.state.icon2}></i></route-icon>
+				<route-text>{this.state.temp1}</route-text>
+				<route-text>{this.state.temp2}</route-text>
 			</route>
 
 		);
