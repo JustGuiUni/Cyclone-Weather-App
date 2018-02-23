@@ -1,0 +1,68 @@
+.grid {
+  display: grid;
+    grid-template-columns: 4fr 1fr;
+    border-radius: 15px;
+  background: #73AD21;
+    padding: 35px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+  font-family: "Tahoma", Geneva, sans-serif;
+}
+.gridchild1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  margin-bottom: 5px;
+}
+.gridchild2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  button-right {
+    height: 56px;
+    line-height: 56px;
+    padding: 10px 10px 10px 10px;
+    min-width: 30px;
+    color: #EEE;
+    font-size: 1.5em;
+    margin-left: 20px;
+    &:hover, &:active {
+      background: rgba(255,255,255,0.1);
+    }
+  }
+}
+.table {
+    float: left;
+    width: 110%;
+    height: 130%;
+    td {
+      text-align: left;
+      width: 50%;
+    }
+}
+.plusbutton {
+    button-left {
+      float: left;
+      background: rgba(255,255,255,0);
+      height: 56px;
+        line-height: 56px;
+        padding: 0 30px;
+        min-width: 50px;
+      color: #EEE;
+      will-change: background-color;
+      font-size: 2em;
+      &:hover, &:active {
+            background: rgba(255,255,255,0.1);
+        }
+    }
+    text-add {
+      font-size: 0.7em;
+      float: right;
+      margin-left: 10px;
+      margin-top: 3.5px;
+      font-family: "Tahoma", Geneva, sans-serif;
+    }
+}

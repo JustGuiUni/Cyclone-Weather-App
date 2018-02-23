@@ -2,7 +2,7 @@
 import { h, render, Component } from 'preact';
 import $ from 'jquery';
 	
-export default class Route extends Component {
+export default class Routeforecast extends Component {
 
 	// check if weather data for the given route has been fetched
 	componentDidMount() {
