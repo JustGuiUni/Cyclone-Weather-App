@@ -9,12 +9,13 @@ import $ from 'jquery';
 // import components
 import Home from '../home/home_index';
 import Route from '../home/route_index';
+import Bottomnav from '../bottomnav/bottomnav_index';
 
 export default class Iphone extends Component {
 
 	// the main render method for the iphone component
 	render() {
-				
+		
 		return (
 			<div class={ style.container }>		
 
@@ -34,12 +35,7 @@ export default class Iphone extends Component {
 				</div>
 
 				{/* Bottom navigation bar. Not currently functional. Contains buttons linking home, hourly, route, and radar pages. */}
-				<div class={ style_bottomnav.container }>
-					<bottom-button><i class="fa fa-home"></i></bottom-button>
-					<bottom-button><i class="fa fa-clock-o"></i></bottom-button>
-					<bottom-button><i class="fa fa-map-marker"></i></bottom-button>
-					<bottom-button><i class="fa fa-bullseye"></i></bottom-button>
-				</div>
+				<Bottomnav/>
 			</div>
 		);
 	}
