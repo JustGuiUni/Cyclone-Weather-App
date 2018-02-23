@@ -1,9 +1,10 @@
 @import '~style/helpers';
 
 .container{
-	position: fixed;
+	position: relative;
 	top: 0;
 	height: 70px;
+    width: 414px;
 	padding: 0;
 	background: #673AB7;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
@@ -45,69 +46,28 @@
 		}
 	}
 
-	input[type=text]{
-		float: left;
-	    padding: 8px;
-	    min-width: 245px;
-	    border: none;
-	    margin-top: 19px;
-	    margin-bottom: 12px;
-	    border-radius: 15px;
-	}
-}
+    homesearch {
+    	input[type=text]{
+    		float: left;
+    	    padding: 8px;
+    	    min-width: 260px;
+    	    border: none;
+    	    margin-top: 19px;
+    	    margin-bottom: 12px;
+    	    border-radius: 15px;
+    	}
+    }
 
-.containerRoute{
-    left: 0;
-    top: 0;
-    width: 414px;
-    height: 56px;
-    padding: 0;
-    background: #673AB7;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    z-index: 1;
-    button-left {
-        float: left;
-        display: inline-block;
-        height: 56px;
-        line-height: 56px;
-        padding: 0 30px;
-        min-width: 50px;
-        text-align: center;
-        background: rgba(255,255,255,0);
-        text-decoration: none;
-        color: #EEE;
-        will-change: background-color;
-        &:hover, &:active {
-            background: rgba(255,255,255,0.3);
-        }
-    }
-    button-right {
-        float: right;
-        display: inline-block;
-        height: 56px;
-        line-height: 56px;
-        padding: 0 30px;
-        min-width: 50px;
-        text-align: center;
-        padding-left: 40px;
-        background: rgba(255,255,255,0);
-        text-decoration: none;
-        color: #EEE;
-        will-change: background-color;
-        &:hover, &:active {
-            background: rgba(255,255,255,0.3);
-        }
-    }
-    input[type=text]{
-        float: left;
-        padding: 10px;
-            padding-left: 15px;
-            padding-right: 30px;
-            padding-top: 10px;
-        border: none;
-        margin-top: 12px;
-        margin-bottom: 12px;
+    routesearch {
+        input[type=text]{
+            float: left;
+            padding: 8px;
+            min-width: 285px;
+            border: none;
+            margin-top: 19px;
+            margin-bottom: 12px;
             margin-left: 25px;
-        border-radius: 15px;
+            border-radius: 15px;
+        }
     }
 }

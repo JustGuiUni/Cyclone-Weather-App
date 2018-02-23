@@ -1,48 +1,132 @@
 @import '~style/helpers';
 
 .container { 
-	position: relative;
 	display: flex;
 	flex-direction: column;
-	background: #000;
 	width: 414px;
 	height: 666px;
 	text-align: center;
 	margin: 0 auto;
-}
+	position: relative;
+	left: 0;
+	top: 0;
+	background: #673AB7;
+	color: #EEE;
 
-.display {
-	display: flex;
-	flex-direction: column;
-	flex: 1;
-	padding-top: 80px;
+	homepage {
+		overflow-y: scroll;
+		overflow-x: hidden;
 
-}
-.details {
-	flex: 4;
-}
-.city {
-	flex: 1;
-	font-size: 1.7em;
-	font-weight: 400;	
-}
-.conditions {
-	flex: 1;
-	font-size: 1em;
-}
-.temperature {
-	flex: 2;
-	margin-top: 0;
-	font-size: 4.8em;
-	font-weight: 300;
-	letter-spacing: 0px;
-}
-.filled:after {
-	content: "°";
-	margin: 0 0 0 1rem;
-	font-size: 0.5em;
-	font-weight: 100;
-	display: inline-block;
-	padding-top: 10px;
-	vertical-align: top;
+		current {
+			display: inline-block;
+			height: 300px;
+			min-width: 414px;
+			background: #966fd6;
+
+			weather-location {
+				display: inline-block;
+				height: 60px;
+				line-height: 60px;
+				min-width: 414px;
+				font-size: 1.5em;
+				text-align: center;
+			}
+
+			weather-icon {
+				float: left;
+				height: 240px;
+				line-height: 37px;
+				font-size: 1.5em;
+				min-width: 207px;
+				background: #673AB7;
+			}
+
+			weather-text {
+				float: right;
+				height: 240px;
+				line-height: 50px;
+				padding-left: 20px;
+				font-size: 1.5em;
+				text-align: left;
+				min-width: 207px;
+				background: #673AB7;
+
+				sub-icon {
+					display: inline-block;
+					min-width: 50px;
+					text-align: center;
+				}
+			}
+		}
+
+		route {
+			display: inline-block;
+			height: 200px;
+			min-width: 414px;
+			font-size: 1.5em;
+			text-align: center;
+		
+			name {
+				float: left;
+				height: 60px;
+				line-height: 60px;
+				min-width: 349px;
+				padding-left: 50px;
+				text-align: center;
+				background: #966fd6;
+			}
+
+			dropdown {
+				position: relative;
+				float: left;
+				height: 60px;
+				line-height: 60px;
+				min-width: 50px;
+				text-align: center;
+				background: #966fd6;
+			}
+
+			dropdown:before {
+				position: absolute;
+				font-family: 'FontAwesome';
+				text-align: center;
+				left: 15px;
+				content: "\f13a";
+			}
+
+			route-text {
+				float: left;
+				height: 45px;
+				width: 207px;
+				font-size: 0.6em;
+				line-height: 45px;
+			}
+
+			route-icon {
+				float: left;
+				height: 50px;
+				width: 50px;
+				border: 6px solid #EEE;
+				border-radius: 25px;
+				line-height: 40px;
+			}
+
+			line{
+			    float: left;
+			    margin-top: 20px;
+			    margin-left: 4px;
+			    margin-right: 4px;
+			    border-radius: 6px;
+			    height: 0px;
+			    width: 149px;
+			    border-bottom:solid 6px #EEE;
+			}
+
+			block{
+				float: left;
+				width: 78px;
+				color: #673AB7; 
+			}
+		}
+	}
 }
