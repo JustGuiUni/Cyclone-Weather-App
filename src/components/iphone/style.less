@@ -1,12 +1,16 @@
 @import '~style/helpers';
 
-.container { 
+.container {
+	overflow-y: scroll;
+	overflow-x: hidden;
 	display: flex;
+	left: 0;
+	top: 0;
 	flex-direction: column;
-	background-image: url('../../assets/backgrounds/clear-iphone.jpg');
+	background: #ac96d3;
 	color: #fff;
-	width: 414px;
-	height: 736px;
+	width: 420px;
+	height: 620px;
 	text-align: center;
 	margin: 0 auto;
 }
@@ -24,7 +28,7 @@
 .city {
 	flex: 1;
 	font-size: 1.7em;
-	font-weight: 400;	
+	font-weight: 400;
 }
 .conditions {
 	flex: 1;

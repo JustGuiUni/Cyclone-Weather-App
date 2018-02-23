@@ -4,10 +4,16 @@ import { h, render, Component } from 'preact';
 import style from './style';
 import style_iphone from '../button/style_iphone';
 import style_topnav from '../topnav/style_topnav';
+import style_bottomnav from '../bottomnav/style_bottomnav';
 // import jquery for API calls
 import $ from 'jquery';
 // import the Button
 import Button from '../button';
+
+//import Footer from '../bottomnav';
+//Import pages
+import Route from '../routes/index';
+import Footer from '../bottomnav/index';
 
 export default class Iphone extends Component {
 //var Iphone = React.createClass({
@@ -23,6 +29,7 @@ export default class Iphone extends Component {
 		// button display state
 		this.setState({ display: true });
 		this.updateInputValue = this.updateInputValue.bind(this);
+
 	}
 
 	// a call to fetch weather data via open weather map
@@ -43,7 +50,7 @@ export default class Iphone extends Component {
 	// The below function makes a call to postcodes.io based on the postcode value inputed by the user. This function also then calls the fetchWeatherData.
 
 	postcodeSearch = () =>{
-		
+
 		var postcode = this.state.postcodeVal;
 		console.log(postcode);
 
@@ -65,7 +72,7 @@ export default class Iphone extends Component {
 
 	}
 
-	// This function reads data from the text input on any update and sets the class variable postcode to that value. 
+	// This function reads data from the text input on any update and sets the class variable postcode to that value.
 	updateInputValue(evt){
 	    this.state.postcodeVal = evt.target.value;
 	    console.log(this.state.postcodeVal);
@@ -76,18 +83,18 @@ export default class Iphone extends Component {
 	render() {
 		// check if temperature data is fetched, if so add the sign styling to the page
 		const tempStyles = this.state.temp ? `${style.temperature} ${style.filled}` : style.temperature;
-				
+
 		// topnav element links to an external stylesheet 'font awesome' that includes icons
 		// allows icon for any element to be set with the following syntax: <i class ="fa fa-ICONNAME"></i>
 		return (
 			<div class={ style.container }>
-				
+
 				<div class={ style_topnav.container }>
-				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>	
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 					<button-left><a><i class="fa fa-bullseye"></i></a></button-left>
 					<input type="text" placeholder="Postcode..." id="searchField"  onChange={this.updateInputValue}></input>
-					<button-left onClick={() => this.postcodeSearch()} ><a><i class="fa fa-search" id="searchButton"></i></a></button-left>	
-					<button-right><a><i class="fa fa-cog"></i></a></button-right>	
+					<button-left onClick={() => this.postcodeSearch()} ><a><i class="fa fa-search" id="searchButton"></i></a></button-left>
+					<button-right><a><i class="fa fa-cog"></i></a></button-right>
 				</div>
 
 				<div class={ style.display }>
@@ -97,11 +104,11 @@ export default class Iphone extends Component {
 				</div>
 
 
-				<div class={ style.details }></div>
-				<div class= { style_iphone.container }> 
+				<div class={ style.details }> </div>
+				<div class= { style_iphone.container }>
 					{ this.state.display ? <Button class={ style_iphone.button } clickFunction={ this.fetchWeatherData }/ > : null }
 				</div>
-			</div>
+			 </div>
 		);
 	}
 
@@ -115,6 +122,6 @@ export default class Iphone extends Component {
 			locate: location,
 			temp: temp_c,
 			cond : conditions
-		});      
+		});
 	}
 }

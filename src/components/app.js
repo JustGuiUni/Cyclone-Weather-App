@@ -1,44 +1,47 @@
 // import preact
 import { h, Component } from 'preact';
+import { Router } from 'preact-router';
+import { Link } from 'preact-router';
 
 // import required Components from 'components/'
 import Iphone from './iphone';
-import Ipad from './ipad';
+import style from './iphone/style';
+import Route from './routes';
+import Footer from './bottomnav';
+//import TopNav from './topnav';
 
 export default class App extends Component {
 //var App = React.createClass({
 
-	// once the components are loaded, checks if the url bar has a path with "ipad" in it, if so sets state of tablet to be true
-	componentDidMount() {
-		const urlBar = window.location.href;
-		if(urlBar.includes("ipad")) {
-			this.setState({
-				"isTablet": true
-			});
-		} else {
-			this.setState({
-				"isTablet": false
-			});
-		}
-	}
+		/*
+		*@param {object} event
+		*@param {string} event.url
+		*/
+
+	handleRoute = e => {
+				this.currentUrl = e.url;
+			};
+
 
 	/*
 		A render method to display the required Component on screen (iPhone or iPad) : selected by checking component's isTablet state
 	*/
 	render(){
-		if(this.state.isTablet){
+
 			return (
-				<div id="app">
-					<Ipad/ >
-				</div>   				
-			);
-		} 
-		else {
-			return (
-				<div id="app">
-					<Iphone/ >
-				</div>
-			);
-		}
+
+				<div class = {style.container}>
+					<div id="app">
+						<Router onChange={this.handleRoute}>
+							<Iphone path = "/index" />
+							<Route path="/routes" />
+						</Router>
+
+						<Footer/>
+						</div>
+					</div>
+
+		);
+
 	}
 }
