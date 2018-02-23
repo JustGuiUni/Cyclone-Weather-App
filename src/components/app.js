@@ -6,7 +6,7 @@ import { Link } from 'preact-router';
 // import required Components from 'components/'
 import Iphone from './iphone';
 import Route from './routes';
-import Bottomnav from './bottomnav/bottomnav_index';
+import Bottomnav from './bottomnav';
 
 import style from './iphone/style';
 
