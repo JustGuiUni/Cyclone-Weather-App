@@ -14,14 +14,6 @@ export default class Route extends Component {
 	// set initial values for the route
 	constructor(props){
 		super(props);
-		this.state.lon1 = "-0.219937668477047";
-		this.state.lat1 = "51.5161988759133";
-		this.state.lon2 = "-0.0997446597109663";
-		this.state.lat2 = "51.4632800638367";
-		this.state.name1 = "Gym";
-		this.state.name2 = "Home";
-		this.state.time1 = "21:00:00";
-		this.state.time2 = "21:00:00";
 		this.state.temp1 = "";
 		this.state.count = 0;
 	}
@@ -29,7 +21,7 @@ export default class Route extends Component {
 	// a call to fetch weather forecasts for each end of the route via open weather map
 	fetchForecastData = () => {
 		
-		var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.state.lat1 + "&lon=" + this.state.lon1 + "&appid=fb1dc4da37f9e2330043b353f437dea9";
+		var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.props.lat1 + "&lon=" + this.props.lon1 + "&appid=fb1dc4da37f9e2330043b353f437dea9";
 		$.ajax({
 			url: url,
 			dataType: "json",
@@ -38,9 +30,9 @@ export default class Route extends Component {
 			error : function(req, err){ console.log('API call failed ' + err); }
 		})
 
-		this.state.count =1;
+		this.state.count = 1;
 
-		url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.state.lat2 + "&lon=" + this.state.lon2 + "&appid=fb1dc4da37f9e2330043b353f437dea9";
+		url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.props.lat2 + "&lon=" + this.props.lon2 + "&appid=fb1dc4da37f9e2330043b353f437dea9";
 		$.ajax({
 			url: url,
 			dataType: "json",
@@ -58,12 +50,12 @@ export default class Route extends Component {
 
 		for (var i = 0; i < forecast_list.length; i++) {
 			if (this.state.count == 0) {
-				if ((forecast_list[i]['dt_txt']).indexOf(this.state.time1) > 0) {
+				if ((forecast_list[i]['dt_txt']).indexOf(this.props.time1) > 0) {
 					var forecast = forecast_list[i];
 					break;
 				}
 			} else {
-				if ((forecast_list[i]['dt_txt']).indexOf(this.state.time2) > 0) {
+				if ((forecast_list[i]['dt_txt']).indexOf(this.props.time2) > 0) {
 					var forecast = forecast_list[i];
 					break;
 				}
@@ -173,10 +165,10 @@ export default class Route extends Component {
 
 		return (
 			<route>
-				<name>Home</name>
+				<name>{this.props.title}</name>
 				<dropdown></dropdown>
-				<route-text>{this.state.name1}: 8:00pm</route-text>
-				<route-text>{this.state.name2}: 9:00pm</route-text>
+				<route-text>{this.props.name1}: {this.props.timed1}</route-text>
+				<route-text>{this.props.name2}: {this.props.timed2}</route-text>
 				<block>a</block>
 				<route-icon><i class= {this.state.icon1}></i></route-icon>
 				<line/>
