@@ -138,9 +138,23 @@ export default class Home extends Component {
 
 	// The below function makes a call to postcodes.io based on the postcode value inputed by the user. 
 	// It also then calls the fetchWeatherData function.
-	postcodeSearch = () =>{
+
+	isPostcodeCheck = () =>{
+		var postcodeRE = /(\D[\D])(\d) ?(\d)(\D[\D])/;
+		var postcodeChecked = postcodeRE.exec(this.state.postcodeVal);
+		if (postcodeChecked == null) {
+			this.placeSearch();
+		}
+		else {
+			this.postcodeSearch();
+		}
+
+	}
+
+	postcodeSearch(){
 		
 		var postcode = this.state.postcodeVal;
+
 		console.log(postcode);
 
 		var url = "https://api.postcodes.io/postcodes/" + postcode;
@@ -156,6 +170,35 @@ export default class Home extends Component {
 		this.state.lat = JSONresponse['result']['latitude'];
 
 		console.log(this.state.lat);
+
+		this.fetchWeatherData();
+
+	}
+
+	placeSearch(){
+		
+		var place = this.state.postcodeVal;
+
+		console.log(place);
+
+		var url = "https://nominatim.openstreetmap.org/search?q=" + place + "&format=jsonv2";
+
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", url, false);
+		xhr.send();
+		console.log(xhr.responseText);
+
+		var JSONresponse = JSON.parse(xhr.responseText);
+
+		for (var i = 0; i <= JSONresponse.length; i++) {
+			console.log(JSONresponse[i]['display_name']);
+			var checkString = JSONresponse[i]['display_name'];
+			if (checkString.includes("United Kingdom")) {
+				this.state.lon = JSONresponse[0]['lon'];
+				this.state.lat = JSONresponse[0]['lat'];
+				break;
+			}	
+		};
 
 		this.fetchWeatherData();
 
@@ -185,7 +228,7 @@ export default class Home extends Component {
 					
 					{/* Update text input and coordinates when user makes a search*/}
 					<input type="text" placeholder="Postcode..." id="searchField"  onChange ={ this.updateInputValue }></input>
-					<Search clickFunction ={ this.postcodeSearch } />	
+					<Search clickFunction ={ this.isPostcodeCheck } />	
 						
 					{/* Settings button has no functionality currently */}
 					<buttonright><i class="fa fa-cog"></i></buttonright>	
