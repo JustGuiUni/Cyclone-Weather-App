@@ -5,11 +5,6 @@ import $ from 'jquery';
 export default class Routeforecast extends Component {
 
 	// check if weather data for the given route has been fetched
-	componentDidMount() {
-		if (this.state.temp1 === "") {
-			this.fetchForecastData();
-		}
-	}
 
 	// set initial values for the route
 	constructor(props){
@@ -162,6 +157,10 @@ export default class Routeforecast extends Component {
 
 	// The elements to render when this component mounts
 	render() {
+		
+		if (this.state.temp1 === "") {
+			this.fetchForecastData();
+		}
 
 		return (
 			<route>
