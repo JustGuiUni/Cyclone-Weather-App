@@ -140,7 +140,7 @@ export default class Home extends Component {
 	// It also then calls the fetchWeatherData function.
 
 	isPostcodeCheck = () =>{
-		var postcodeRE = /(\D[\D])(\d) ?(\d)(\D[\D])/;
+		var postcodeRE = /(\D[\D])(\d[\d]) ?(\d[\d])(\D[\D])/;
 		var postcodeChecked = postcodeRE.exec(this.state.postcodeVal);
 		if (postcodeChecked == null) {
 			this.placeSearch();
