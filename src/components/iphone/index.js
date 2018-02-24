@@ -137,7 +137,7 @@ export default class Iphone extends Component {
 	}
 
 	isPostcodeCheck = () =>{
- 		var postcodeRE = /(\D[\D])(\d) ?(\d)(\D[\D])/;
+ 		var postcodeRE = /(\D[\D])(\d[\d]) ?(\d[\d])(\D[\D])/;
  		var postcodeChecked = postcodeRE.exec(this.state.postcodeVal);
  
  		if (postcodeChecked == null) {
