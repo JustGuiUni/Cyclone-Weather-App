@@ -61,9 +61,10 @@ export default class Routeforecast extends Component {
 		var wind_speed = forecast['wind']['speed'];
 		var wind_direction = forecast['wind']['deg'];
 		var conditions = forecast['weather'][0]['id'];
+		var sunstate = forecast['sys']['pod'];
 
 		// call two additional helper functions to parse numeric values for wind direction and conditions into English
-		var cond_icon = this.parseConditions(conditions);
+		var cond_icon = this.parseConditions(conditions, sunstate);
 		conditions = cond_icon[0];
 		var icon = cond_icon[1];
 		wind_direction = this.parseWind(wind_direction);
@@ -87,47 +88,95 @@ export default class Routeforecast extends Component {
 
 	// Open Weather Map uses an id code to indicate weather conditions
 	// This function converts an id code into an English language description and sets the appropriate icon
-	parseConditions = (c) => {
+	parseConditions = (c, sunstate) => {
+
 		var i = "";
 
 		if (200 <= c && c <= 232){
 			c = "Thunderstorm";
-			i = "fa fa-bolt";
+			if (sunstate == "d") {
+				i = "wi wi-day-thunderstorm";
+			} else {
+				i = "wi wi-night-alt-thunderstorm";
+			}
 		} else if (300 <= c && c <= 321){
 			c = "Drizzle";
-			i = "fa fa-tint";
+			if (sunstate == "d") {
+				i = "wi wi-day-showers";
+			} else {
+				i = "wi wi-night-alt-showers";
+			}
 		} else if (c == 500 || c == 520){
 			c = "Light Rain";
-			i = "fa fa-tint";
+			if (sunstate == "d") {
+				i = "wi wi-day-showers";
+			} else {
+				i = "wi wi-night-alt-showers";
+			}
 		} else if (c == 501 || c == 521){
 			c = "Moderate Rain";
-			i = "fa fa-tint";
+			if (sunstate == "d") {
+				i = "wi wi-day-showers";
+			} else {
+				i = "wi wi-night-alt-showers";
+			}
 		} else if ((502 <= c && c <= 504) || (522 <= c && c <= 531)){
 			c = "Heavy Rain";
-			i = "fa fa-tin";
+			if (sunstate == "d") {
+				i = "wi wi-day-rain";
+			} else {
+				i = "wi wi-night-alt-rain";
+			}
 		} else if (c == 511){
 			c = "Freezing Rain";
-			i = "fa fa-tint";
+			if (sunstate == "d") {
+				i = "wi wi-day-sleet";
+			} else {
+				i = "wi wi-night-alt-sleet";
+			}
 		} else if (600 <= c && c <= 622){
 			c = "Snow";
-			i = "fa fa-snowflake";
+			if (sunstate == "d") {
+				i = "wi wi-day-snow";
+			} else {
+				i = "wi wi-night-alt-snow";
+			}
 		} else if (701 == c) {
 			c = "Mist";
-			i = "fa fa-align-justify";
+			if (sunstate == "d") {
+				i = "wi wi-day-fog";
+			} else {
+				i = "wi wi-night-fog";
+			}
 		} else if (721 == c) {
 			c = "Haze";
-			i = "fa fa-align-justify";
+			if (sunstate == "d") {
+				i = "wi wi-day-haze";
+			} else {
+				i = "wi wi-night-fog";
+			}
 		} else if (741 == c) {
 			c = "Fog";
-			i = "fa fa-align-justify";
+			if (sunstate == "d") {
+				i = "wi wi-day-fog";
+			} else {
+				i = "wi wi-night-fog";
+			}
 		} else if (800 == c) {
 			c = "Clear Sky"
-			i = "fa fa-sun-o";
+			if (sunstate == "d") {
+				i = "wi wi-day-sunny";
+			} else {
+				i = "wi wi-night-clear";
+			}
 		} else {
 			c = "Clouds";
-			i = "fa fa-cloud";
-		}
-		
+			if (sunstate == "d") {
+				i = "wi wi-day-cloudy";
+			} else {
+				i = "wi wi-night-alt-cloudy";
+			}
+		}		
 		return [c,i];
 	}
 
@@ -168,10 +217,11 @@ export default class Routeforecast extends Component {
 				<dropdown></dropdown>
 				<route-text>{this.props.name1}: {this.props.timed1}</route-text>
 				<route-text>{this.props.name2}: {this.props.timed2}</route-text>
-				<block>a</block>
-				<route-icon><i class= {this.state.icon1}></i></route-icon>
-				<line/>
-				<route-icon><i class= {this.state.icon2}></i></route-icon>
+				<route-details>
+					<route-icon><i class= {this.state.icon1}></i></route-icon>
+					<line/>
+					<route-icon><i class= {this.state.icon2}></i></route-icon>
+				</route-details>
 				<route-text>{this.state.temp1}</route-text>
 				<route-text>{this.state.temp2}</route-text>
 			</route>

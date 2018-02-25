@@ -21,7 +21,7 @@
 			display: inline-block;
 			height: 300px;
 			min-width: 414px;
-			background: #966fd6;
+			background: #673AB7;
 
 			weather-location {
 				display: inline-block;
@@ -30,31 +30,39 @@
 				min-width: 414px;
 				font-size: 1.5em;
 				text-align: center;
+				background: #966fd6;
 			}
 
-			weather-icon {
+			weather-iandc {
 				float: left;
 				height: 240px;
-				line-height: 37px;
-				font-size: 1.5em;
 				min-width: 207px;
-				background: #673AB7;
+				text-align: center;
+				padding-top: 45px;
+
+				weather-icon {
+					font-size: 6em;
+				}
+
+				weather-conditions {
+					line-height: 37px;
+					font-size: 1.5em;
+				}
 			}
 
 			weather-text {
 				float: right;
 				height: 240px;
 				line-height: 50px;
-				padding-left: 20px;
 				font-size: 1.5em;
 				text-align: left;
 				min-width: 207px;
-				background: #673AB7;
 
 				sub-icon {
 					display: inline-block;
 					min-width: 50px;
 					text-align: center;
+					fill: #EEE;
 				}
 			}
 		}
@@ -64,7 +72,6 @@
 			height: 200px;
 			min-width: 414px;
 			font-size: 1.5em;
-			text-align: center;
 		
 			name {
 				float: left;
@@ -72,7 +79,6 @@
 				line-height: 60px;
 				min-width: 349px;
 				padding-left: 50px;
-				text-align: center;
 				background: #966fd6;
 			}
 
@@ -82,14 +88,12 @@
 				height: 60px;
 				line-height: 60px;
 				min-width: 50px;
-				text-align: center;
 				background: #966fd6;
 			}
 
 			dropdown:before {
 				position: absolute;
 				font-family: 'FontAwesome';
-				text-align: center;
 				left: 15px;
 				content: "\f13a";
 			}
@@ -102,30 +106,29 @@
 				line-height: 45px;
 			}
 
-			route-icon {
-				float: left;
-				height: 50px;
-				width: 50px;
-				border: 6px solid #EEE;
-				border-radius: 25px;
-				line-height: 40px;
-			}
+			route-details {
+				text-align: center;
 
-			line{
-			    float: left;
-			    margin-top: 20px;
-			    margin-left: 4px;
-			    margin-right: 4px;
-			    border-radius: 6px;
-			    height: 0px;
-			    width: 149px;
-			    border-bottom:solid 6px #EEE;
-			}
+				route-icon {
+					display: inline-block;
+					height: 50px;
+					width: 66px;
+					/*border: 4px solid #EEE;*/
+					/*border-radius: 33px;*/
+					padding-top: 5px;
+					font-size: 1.5em;
+				}
 
-			block{
-				float: left;
-				width: 78px;
-				color: #673AB7; 
+				line{
+					display: inline-block;
+				    margin-bottom: 10px;
+				    margin-left: 4px;
+				    margin-right: 4px;
+				    border-radius: 6px;
+				    height: 0px;
+				    width: 130px;
+				    border-bottom:solid 4px #EEE;
+				}
 			}
 		}
 	}
