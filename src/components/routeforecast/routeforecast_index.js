@@ -4,13 +4,24 @@ import $ from 'jquery';
 	
 export default class Routeforecast extends Component {
 
-	// check if weather data for the given route has been fetched
+	componentDidMount() {
+		if(document.getElementById("details")){
+			var element = document.getElementById("details");
+		    element.id = this.props.detailsid;
+	    }
+	    if(document.getElementById("icon")){
+	    	var icon = document.getElementById("icon");
+	    	icon.id = this.props.iconid;
+	    }
+	}
 
 	// set initial values for the route
 	constructor(props){
 		super(props);
 		this.state.temp1 = "";
 		this.state.count = 0;
+		this.expand = this.expand.bind(this);
+		this.state.clicked = Boolean(false);
 	}
 
 	// a call to fetch weather forecasts for each end of the route via open weather map
@@ -204,6 +215,23 @@ export default class Routeforecast extends Component {
 		return w;		
 	}
 
+	expand() {
+	    var element = document.getElementById(this.props.detailsid);
+	    if (element.style.display === "none") {
+	        element.style.display = "inline-block";
+	    } else {
+	        element.style.display = "none";
+	    }
+
+		var icon = document.getElementById(this.props.iconid);
+		if(icon.className == "fa fa-chevron-circle-down") {
+			icon.className = "fa fa-chevron-circle-up";
+			console.log(icon.className);
+		} else {
+			icon.className = "fa fa-chevron-circle-down";
+		}
+	}
+
 	// The elements to render when this component mounts
 	render() {
 		
@@ -214,18 +242,22 @@ export default class Routeforecast extends Component {
 		return (
 			<route>
 				<name>{this.props.title}</name>
-				<dropdown></dropdown>
+				<dropdown onClick={this.expand}><i id="icon" class="fa fa-chevron-circle-down"/></dropdown>
 				<route-text>{this.props.name1}: {this.props.timed1}</route-text>
 				<route-text>{this.props.name2}: {this.props.timed2}</route-text>
-				<route-details>
+				<route-graphics>
 					<route-icon><i class= {this.state.icon1}></i></route-icon>
 					<line/>
 					<route-icon><i class= {this.state.icon2}></i></route-icon>
-				</route-details>
+				</route-graphics>
 				<route-text>{this.state.temp1}</route-text>
 				<route-text>{this.state.temp2}</route-text>
+				<route-details id="details" style="display: none">
+						<detail-text>{this.state.cond1}<br />{this.state.winds1}<br />{this.state.windd1}</detail-text>
+						<detail-icon><i class="wi wi-strong-wind"/><br /><i class="fa fa-compass"/></detail-icon>
+						<detail-text>{this.state.cond2}<br />{this.state.winds2}<br />{this.state.windd2}</detail-text>
+				</route-details>
 			</route>
-
 		);
 	}
 }

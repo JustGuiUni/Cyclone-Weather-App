@@ -69,9 +69,9 @@
 
 		route {
 			display: inline-block;
-			height: 200px;
 			min-width: 414px;
 			font-size: 1.5em;
+			overflow: visible;
 		
 			name {
 				float: left;
@@ -89,24 +89,25 @@
 				line-height: 60px;
 				min-width: 50px;
 				background: #966fd6;
-			}
+			
+				flipped {
+					-webkit-transform:rotateY(180deg);
+					-moz-transform:rotateY(180deg);
+					-ms-transform:rotateY(180deg);
+					-o-transform:rotateY(180deg);
+					transform:rotateY(180deg);
+				}
 
-			dropdown:before {
-				position: absolute;
-				font-family: 'FontAwesome';
-				left: 15px;
-				content: "\f13a";
 			}
 
 			route-text {
 				float: left;
-				height: 45px;
 				width: 207px;
 				font-size: 0.6em;
 				line-height: 45px;
 			}
 
-			route-details {
+			route-graphics {
 				text-align: center;
 
 				route-icon {
@@ -128,6 +129,26 @@
 				    height: 0px;
 				    width: 130px;
 				    border-bottom:solid 4px #EEE;
+				}
+			}
+
+			route-details {
+				overflow: visible;
+				font-size: 0.6em;
+				text-align: center;
+				height: 100px;
+
+				detail-text {
+					display: inline-block;
+					width: 100px;
+					line-height: 30px;
+				}
+
+				detail-icon {
+					display: inline-block;
+					padding-top: 30px;
+					line-height: 30px;
+					min-width: 110px;
 				}
 			}
 		}
