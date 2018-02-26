@@ -1,5 +1,6 @@
 // import preact
 import { h, render, Component } from 'preact';
+
 // import stylesheets for iphone, button
 import style from './style.less';
 import style_topnav from '../topnav/style';
@@ -7,18 +8,12 @@ import style_iphone from '../iphone/style';
 
 export default class Route extends Component {
 
-  // a constructor with initial set states
-  constructor(props){
-    super(props);
-  }
-
-
-  // the main render method for the routes component
+    // the main render method for the routes component
 	render() {
 
-    // dsiplay route mapping
 		return (
     		<div class={ style.container }>
+
 
 		      	<div class={ style_topnav.container }>
 		        	<input class={ style_topnav.input } type="route" placeholder="Search my routes..." id="searchField"></input>
@@ -31,6 +26,7 @@ export default class Route extends Component {
                     <button-left><i class="fa fa-plus-circle" id="addRoute"> <text-add>Add Route</text-add></i></button-left><br />
 	    	  	</div>
 
+                {/* Each grid element represents settings for a route, inputted by the user */}
                 <div class={ style_iphone.homepage }>
     				<div class={ style.grid }>
     					<div class= {style.gridchild1 }><table class={ style.table }><tr><td>UNI</td><td>Start: Home</td></tr><tr><td>8 am</td><td>End: QMUL</td></tr></table></div>

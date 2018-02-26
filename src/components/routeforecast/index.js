@@ -1,10 +1,16 @@
 // import preact
 import { h, render, Component } from 'preact';
+
+// import jquery for API calls
 import $ from 'jquery';
+
+// import stylesheet for iphone
 import style from '../iphone/style';
 	
 export default class Routeforecast extends Component {
 
+	// on component mount, assign dropdown button and expanding dropdown element an id unique to each instance of the component
+	// ensures dropdown buttons animate consistently and always display the correct elemtn when clicked
 	componentDidMount() {
 		if(document.getElementById("details")){
 			var element = document.getElementById("details");
@@ -22,7 +28,6 @@ export default class Routeforecast extends Component {
 		this.state.temp1 = "";
 		this.state.count = 0;
 		this.expand = this.expand.bind(this);
-		this.state.clicked = Boolean(false);
 		this.state.detailsid = this.props.num + "d";
 	   	this.state.iconid = this.props.num + "i";
 	}
@@ -83,7 +88,7 @@ export default class Routeforecast extends Component {
 		var icon = cond_icon[1];
 		wind_direction = this.parseWind(wind_direction);
 
-		// set states for fields so they could be rendered later on
+		// set states for fields so they can be rendered later on
 		if (this.state.count == 0) {
 			this.state.temp1 = temp_c + "°";
 			this.state.cond1 = conditions;
@@ -218,6 +223,8 @@ export default class Routeforecast extends Component {
 		return w;		
 	}
 
+	// sets the routedetails element to open when the dropdown button is clicked
+	// animates the dropdown button
 	expand() {
 	    var element = document.getElementById(this.state.detailsid);
 	    if (element.style.display === "none") {
@@ -234,9 +241,10 @@ export default class Routeforecast extends Component {
 		}
 	}
 
-	// The elements to render when this component mounts
+	// the main render method for the routeforecast component
 	render() {
 		
+		// fetch forecast data for the route on initial render
 		if (this.state.temp1 === "") {
 			this.fetchForecastData();
 		}

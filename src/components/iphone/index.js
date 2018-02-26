@@ -1,13 +1,15 @@
 // import preact
 import { h, render, Component } from 'preact';
-// import stylesheets
+
+// import stylesheets for iphone, topnav
 import style from './style';
 import style_topnav from '../topnav/style';
 
 // import jquery for API calls
 import $ from 'jquery';
-// import components
-import Routeforecast from '../routeforecast/routeforecast_index';
+
+// import required application components
+import Routeforecast from '../routeforecast/';
 import Relocate from '../topnav/relocate_index';
 import Search from '../topnav/search_index';
 
@@ -17,7 +19,6 @@ export default class Iphone extends Component {
 	// a constructor with initial set states
 	constructor(props){
 		super(props);
-		// temperature, long, lat initialise state
 		this.state.temp = "";
 		this.state.lon = "-0.03749985";
 		this.state.lat = "51.520497918";
@@ -54,7 +55,7 @@ export default class Iphone extends Component {
 		this.state.icon = cond_icon[1];
 		wind_direction = this.parseWind(wind_direction);
 
-		// set states for fields so they could be rendered later on
+		// set states for fields so they can be rendered later on
 		this.setState({
 			locate: location,
 			temp: temp_c + "°",
@@ -199,10 +200,9 @@ export default class Iphone extends Component {
  
  // 	}
 
-	// // The below function makes a call to postcodes.io based on the postcode value inputed by the user. 
-	// // It also then calls the fetchWeatherData function.
+	// makes a call to postcodes.io based on the postcode value inputed by the user
+	// parses this postcode into lat and lon values 
 	postcodeSearch(){
-
 		var postcodeRE = /([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))\s?[0-9][A-Za-z]{2})/;
  		var postcode = postcodeRE.exec(this.state.postcodeVal);
  		postcode = postcode[0];
@@ -224,12 +224,13 @@ export default class Iphone extends Component {
 		console.log(this.state.lat);
 
 		this.fetchWeatherData();
-
 	}
 
+	// makes a call to nominatim.openstreetmap.org based on the location entered by the user
+	// calls postcodeSearch() if the user has entered a postcode
+	// if not a postcode, parses this location into lat and lon values
 	placeSearch = () =>{
- 		
-		var place = this.state.postcodeVal;
+ 		var place = this.state.postcodeVal;
 	 
 		console.log(place);
 	 
@@ -258,24 +259,25 @@ export default class Iphone extends Component {
 		};
 	 
 	 	this.fetchWeatherData();
- 
  	}
 
-	// This function reads data from the text input on any update and sets the class variable postcode to that value. 
+	// reads data from the text input on any update and sets the class variable "postcodeVal" to that value. 
 	updateInputValue(evt){
 	    this.state.postcodeVal = evt.target.value;
 	    console.log(this.state.postcodeVal);
 	}
 
-	// Reset coordinates when user presses the crosshair button
+	// resets coordinates to default location when user presses the crosshair button
 	resetCoordinates = () =>{
 		this.state.lon = "-0.03749985";
 		this.state.lat = "51.520497918";
 		this.fetchWeatherData();
 	}
 
+	// the main render method for the iphone component
 	render() {
 
+		// fetch current weather information on initial render
 		if (this.state.temp === "") {
 			this.fetchWeatherData();
 		}
@@ -294,7 +296,8 @@ export default class Iphone extends Component {
 					{/* Settings button has no functionality currently */}
 					<div class={ style_topnav.buttonright }><i class="fa fa-cog"></i></div>	
 				</div>
-			
+				
+				{/* Current weather at specified location */ }
 				<div class={ style.homepage }>
 					<div class={ style.current }>
 						<div class={ style.weatherlocation }> {this.state.locate} </div>				

@@ -1,10 +1,12 @@
 // import preact
 import { h, render, Component } from 'preact';
+
+// import stylesheet for topnav
 import style from './style';
 	
 export default class Relocate extends Component {
 
-	// rendering a function when the button is clicked
+	// A render method to render a function when the button is clicked
 	render({clickFunction}) {
 		if(!clickFunction){
 			clickFunction = () => {
