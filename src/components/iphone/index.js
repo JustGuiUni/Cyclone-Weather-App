@@ -276,8 +276,13 @@ export default class Iphone extends Component {
 					
 					{/* Update text input and coordinates when user makes a search*/}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 					<homesearch><input type="text" placeholder="Search Location..." id="searchField"  onChange ={ this.updateInputValue }></input></homesearch>
 					<Search clickFunction ={ this.isPostcodeCheck } />	
+=======
+					<input class={ style_topnav.input }  type="location" placeholder="Search Location..." id="searchField"  onChange ={ this.updateInputValue }></input>
+					<Search clickFunction ={ this.placeSearch }/>	
+>>>>>>> Stashed changes
 =======
 					<input class={ style_topnav.input }  type="location" placeholder="Search Location..." id="searchField"  onChange ={ this.updateInputValue }></input>
 					<Search clickFunction ={ this.placeSearch }/>	

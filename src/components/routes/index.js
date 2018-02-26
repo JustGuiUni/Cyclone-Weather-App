@@ -27,6 +27,7 @@ export default class Route extends Component {
 		      	</div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 		      	<div class={style.plusbutton}>
 					<button-left><i class="fa fa-plus-circle" id="addRoute"> <text-add>Add Route</text-add></i></button-left><br />
 	    	  	</div>
@@ -36,6 +37,12 @@ export default class Route extends Component {
                     <button-left><i class="fa fa-plus-circle" id="addRoute"> <text-add>Add Route</text-add></i></button-left><br />
 	    	  	</div>
 
+=======
+                <div class={ style.plusbutton }>
+                    <button-left><i class="fa fa-plus-circle" id="addRoute"> <text-add>Add Route</text-add></i></button-left><br />
+	    	  	</div>
+
+>>>>>>> Stashed changes
                 <div class={ style_iphone.homepage }>
     				<div class={ style.grid }>
     					<div class= {style.gridchild1 }><table class={ style.table }><tr><td>UNI</td><td>Start: Home</td></tr><tr><td>8 am</td><td>End: QMUL</td></tr></table></div>
@@ -79,6 +86,9 @@ export default class Route extends Component {
     					<div class= {style.gridchild2 }> <button-right><i class="fa fa-edit"></i></button-right></div>
                     </div>
                 </div>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 			</div>
 		);
