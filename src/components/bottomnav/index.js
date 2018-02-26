@@ -1,16 +1,16 @@
 import {h, render, Component} from 'preact';
 import { Link } from 'preact-router';
-import style_bottomnav from './style_bottomnav.less';
+import style from './style';
 
 export default class Bottomnav extends Component {
 
    render() {
       return (
-        <nav class={ style_bottomnav.container }>
-        <Link activeClassName="active" href="/index"><bottom-button><i class="fa fa-home"></i></bottom-button></Link>
-        <bottom-button><i class="fa fa-clock-o"></i></bottom-button>
-        <Link activeClassName="active" href="/routes"><bottom-button><i class="fa fa-map-marker"></i></bottom-button></Link>
-        <bottom-button><i class="fa fa-bullseye"></i></bottom-button>
+        <nav class={ style.container }>
+        <Link activeClassName="active" href="/index"><div class={ style.bottombutton }><i class="fa fa-home"></i></div></Link>
+        <div class={ style.bottombutton }><i class="fa fa-clock-o"></i></div>
+        <Link activeClassName="active" href="/routes"><div class={ style.bottombutton }><i class="fa fa-map-marker"></i></div></Link>
+        <div class={ style.bottombutton }><i class="fa fa-bullseye"></i></div>
         </nav>
       );
     }

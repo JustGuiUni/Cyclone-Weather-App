@@ -1,18 +1,17 @@
 // import preact
 import { h, render, Component } from 'preact';
 import $ from 'jquery';
+import style from '../iphone/style';
 	
 export default class Routeforecast extends Component {
 
 	componentDidMount() {
 		if(document.getElementById("details")){
 			var element = document.getElementById("details");
-			this.state.detailsid = this.props.num + "d";
 		    element.id = this.state.detailsid;
 	    }
 	    if(document.getElementById("icon")){
 	    	var element = document.getElementById("icon");
-	    	this.state.iconid = this.props.num + "i";
 	    	element.id = this.state.iconid;
 	    }
 	}
@@ -24,6 +23,8 @@ export default class Routeforecast extends Component {
 		this.state.count = 0;
 		this.expand = this.expand.bind(this);
 		this.state.clicked = Boolean(false);
+		this.state.detailsid = this.props.num + "d";
+	   	this.state.iconid = this.props.num + "i";
 	}
 
 	// a call to fetch weather forecasts for each end of the route via open weather map
@@ -241,24 +242,24 @@ export default class Routeforecast extends Component {
 		}
 
 		return (
-			<route>
-				<name>{this.props.title}</name>
-				<dropdown onClick={this.expand}><i id="icon" class="fa fa-chevron-circle-down"/></dropdown>
-				<route-text>{this.props.name1}: {this.props.timed1}</route-text>
-				<route-text>{this.props.name2}: {this.props.timed2}</route-text>
-				<route-graphics>
-					<route-icon><i class= {this.state.icon1}></i></route-icon>
-					<line/>
-					<route-icon><i class= {this.state.icon2}></i></route-icon>
-				</route-graphics>
-				<route-text>{this.state.temp1}</route-text>
-				<route-text>{this.state.temp2}</route-text>
-				<route-details id="details" style="display: none">
-						<detail-text>{this.state.cond1}<br />{this.state.winds1}<br />{this.state.windd1}</detail-text>
-						<detail-icon><i class="wi wi-strong-wind"/><br /><i class="fa fa-compass"/></detail-icon>
-						<detail-text>{this.state.cond2}<br />{this.state.winds2}<br />{this.state.windd2}</detail-text>
-				</route-details>
-			</route>
+			<div class={ style.route }>
+				<div class={ style.name }>{this.props.title}</div>
+				<div class={ style.dropdown } onClick={this.expand}><i id="icon" class="fa fa-chevron-circle-down"/></div>
+				<div class={ style.routetext }>{this.props.name1}: {this.props.timed1}</div>
+				<div class={ style.routetext }>{this.props.name2}: {this.props.timed2}</div>
+				<div class={ style.routegraphics }>
+					<div class={ style.routeicon }><i class= {this.state.icon1}></i></div>
+					<div class={ style.line }/>
+					<div class={ style.routeicon }><i class= {this.state.icon2}></i></div>
+				</div>
+				<div class={ style.routetext }>{this.state.temp1}</div>
+				<div class={ style.routetext }>{this.state.temp2}</div>
+				<div class={ style.routedetails } id="details" style="display: none">
+						<div class={ style.detailtext }>{this.state.cond1}<br />{this.state.winds1}<br />{this.state.windd1}</div>
+						<div class={ style.detailicon }><i class="wi wi-strong-wind"/><br /><i class="fa fa-compass"/></div>
+						<div class={ style.detailtext }>{this.state.cond2}<br />{this.state.winds2}<br />{this.state.windd2}</div>
+				</div>
+			</div>
 		);
 	}
 }

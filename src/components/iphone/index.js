@@ -2,7 +2,7 @@
 import { h, render, Component } from 'preact';
 // import stylesheets
 import style from './style';
-import style_topnav from '../topnav/style_topnav';
+import style_topnav from '../topnav/style';
 
 // import jquery for API calls
 import $ from 'jquery';
@@ -288,34 +288,34 @@ export default class Iphone extends Component {
 					<Relocate clickFunction={ this.resetCoordinates }/>
 					
 					{/* Update text input and coordinates when user makes a search*/}
-					<homesearch><input type="text" placeholder="Search Location..." id="searchField"  onChange ={ this.updateInputValue }></input></homesearch>
-					<Search clickFunction ={ this.placeSearch } />	
+					<input class={ style_topnav.input }  type="location" placeholder="Search Location..." id="searchField"  onChange ={ this.updateInputValue }></input>
+					<Search clickFunction ={ this.placeSearch }/>	
 						
 					{/* Settings button has no functionality currently */}
-					<buttonright><i class="fa fa-cog"></i></buttonright>	
+					<div class={ style_topnav.buttonright }><i class="fa fa-cog"></i></div>	
 				</div>
 			
-				<homepage>
-					<current>
-						<weather-location> {this.state.locate} </weather-location>				
-						<weather-iandc>
-							<weather-icon><i class= {this.state.icon}></i></weather-icon><br />
-							<weather-conditions>{this.state.cond}</weather-conditions>
-						</weather-iandc>
+				<div class={ style.homepage }>
+					<div class={ style.current }>
+						<div class={ style.weatherlocation }> {this.state.locate} </div>				
+						<div class={ style.weatheriandc }>
+							<div class={ style.weathericon }><i class= {this.state.icon}></i></div><br />
+							<div class={ style.weatherconditions }>{this.state.cond}</div>
+						</div>
 						
 						{/* Display temperature, wind speed, wind direction*/}
-						<weather-text> 
-							<br /><sub-icon><i class="fa fa-thermometer"></i></sub-icon>{this.state.temp} 
-							<br /><sub-icon><i class ="wi wi-strong-wind"></i></sub-icon>{this.state.winds} 
-							<br /><sub-icon><i class="fa fa-compass"></i></sub-icon>{this.state.windd}
-						</weather-text>
-					</current>
+						<div class={ style.weathertext }> 
+							<br /><div class={ style.subicon }><i class="fa fa-thermometer"></i></div>{this.state.temp} 
+							<br /><div class={ style.subicon }><i class ="wi wi-strong-wind"></i></div>{this.state.winds} 
+							<br /><div class={ style.subicon }><i class="fa fa-compass"></i></div>{this.state.windd}
+						</div>
+					</div>
 
 					{/* Elements containing route weather information */}
 					<Routeforecast title="Your Next Commute" lon1="-0.1" lat1="51.463" lon2="-0.037" lat2="51.520" name1="Home" name2="QMUL" time1="09:00:00" time2="09:00:00" timed1="8am" timed2="9am" num="1"/>
 					<Routeforecast title="Gym" lon1= "-0.037" lat1="51.520" lon2="-0.219" lat2="51.516" name1="QMUL" name2="Gym" time1="15:00:00" time2="18:00:00" timed1="5pm" timed2="6pm" num="2"/>
 					<Routeforecast title="Home" lon1= "-0.219" lat1="51.516" lon2="-0.099" lat2="51.463" name1="Gym" name2="Home" time1="21:00:00" time2="21:00:00" timed1="8pm" timed2="9pm" num="3"/>
-				</homepage>
+				</div>
 			</div>
 		)
 	}

@@ -1,5 +1,6 @@
 // import preact
 import { h, render, Component } from 'preact';
+import style from './style';
 	
 export default class Search extends Component {
 
@@ -11,9 +12,9 @@ export default class Search extends Component {
 			}
 		}	
 		return (
-			<buttonleft onClick={clickFunction}>
+			<div class={ style.buttonleft } onClick={clickFunction}>
 				<i class="fa fa-search"></i>
-			</buttonleft>
+			</div>
 		);
 	}
 }
