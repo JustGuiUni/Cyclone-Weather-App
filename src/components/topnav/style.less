@@ -1,0 +1,70 @@
+@import '~style/helpers';
+
+.container{
+	position: relative;
+	top: 0;
+	height: 70px;
+    width: 414px;
+	padding: 0;
+	background: #673AB7;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+	z-index: 1;
+}
+
+.buttonleft {
+	float: left;
+	display: inline-block;
+	height: 70px;
+	line-height: 70px;
+	padding: 0 15px;
+	min-width: 50px;
+	font-size: 1.5em;
+	text-align: center;
+	background: #673AB7;
+	color: #EEE;
+	will-change: background-color;
+
+	&:hover, &:active {
+		background: #966fd6;
+	}	
+}
+
+.buttonright {
+	float: right;
+	display: inline-block;
+	height: 70px;
+	line-height: 70px;
+	padding: 0 15px;
+	min-width: 50px;
+	font-size: 1.5em;
+	text-align: center;
+	background: #673AB7;
+	color: #EEE;
+	will-change: background-color;
+
+	&:hover, &:active {
+		background: #966fd6;
+	}
+}
+
+
+.input[type=location]{
+	float: left;
+    padding: 8px;
+    min-width: 260px;
+    border: none;
+    margin-top: 19px;
+    margin-bottom: 12px;
+    border-radius: 15px;
+}
+
+.input[type=route]{
+        float: left;
+        padding: 8px;
+        min-width: 295px;
+        border: none;
+        margin-top: 19px;
+        margin-bottom: 12px;
+        margin-left: 15px;
+        border-radius: 15px;
+}
