@@ -26,10 +26,6 @@ export default class Route extends Component {
 		        	<div class={ style_topnav.buttonright }><a><i class="fa fa-cog"></i></a></div>
 		      	</div>
 
-		      	<div class={style.plusbutton}>
-					<button-left><i class="fa fa-plus-circle" id="addRoute"> <text-add>Add Route</text-add></i></button-left><br />
-	    	  	</div>
-
                 <div class={ style.plusbutton }>
                     <button-left><i class="fa fa-plus-circle" id="addRoute"> <text-add>Add Route</text-add></i></button-left><br />
 	    	  	</div>
@@ -39,26 +35,17 @@ export default class Route extends Component {
     					<div class= {style.gridchild1 }><table class={ style.table }><tr><td>UNI</td><td>Start: Home</td></tr><tr><td>8 am</td><td>End: QMUL</td></tr></table></div>
     					<div class= {style.gridchild2 }><button-right><i class="fa fa-edit" id="editroute"></i></button-right></div>
     				</div>
+					
+					<div class={ style.grid }>
+						<div class= {style.gridchild1 }><table class={ style.table }><tr><td>GYM</td><td>Start: W12</td></tr><tr><td>6 pm</td><td>End: W18</td></tr></table></div>
+						<div class= {style.gridchild2 }> <button-right><i class="fa fa-edit"></i></button-right></div>
+          			</div>
+				
+					<div class={ style.grid }>
+						<div class= {style.gridchild1 }><table class={ style.table }><tr><td>HOME</td><td>Start: E16</td></tr><tr><td>6 pm</td><td>End: SE18</td></tr></table></div>
+						<div class= {style.gridchild2 }><button-right><i class="fa fa-edit" id="editroute"></i></button-right></div>
+					</div>
 
-				<div class={ style.grid }>
-					<div class= {style.gridchild1 }><table class={ style.table }><tr><td>WORK</td><td>Start: SE27</td></tr><tr><td>6 pm</td><td>End: N19</td></tr></table></div>
-					<div class= {style.gridchild2 }><button-right><i class="fa fa-edit" id="editroute"></i></button-right></div>
-				</div>
-
-				<div class={ style.grid }>
-					<div class= {style.gridchild1 }><table class={ style.table }><tr><td>HOME</td><td>Start: E16</td></tr><tr><td>6 pm</td><td>End: SE18</td></tr></table></div>
-					<div class= {style.gridchild2 }><button-right><i class="fa fa-edit" id="editroute"></i></button-right></div>
-				</div>
-
-				<div class={ style.grid }>
-					<div class= {style.gridchild1 }><table class={ style.table }><tr><td>UNI</td><td>Start: NE2</td></tr><tr><td>6 pm</td><td>End: SW1</td></tr></table></div>
-					<div class= {style.gridchild2 }><button-right><i class="fa fa-edit"></i></button-right></div>
-				</div>
-
-				<div class={ style.grid }>
-					<div class= {style.gridchild1 }><table class={ style.table }><tr><td>GYM</td><td>Start: W12</td></tr><tr><td>6 pm</td><td>End: W18</td></tr></table></div>
-					<div class= {style.gridchild2 }> <button-right><i class="fa fa-edit"></i></button-right></div>
-          		</div>
     				<div class={ style.grid }>
     					<div class= {style.gridchild1 }><table class={ style.table }><tr><td>COFFEE TIME</td><td>Start: Home</td></tr><tr><td>11 am</td><td>End: Coffee store</td></tr></table></div>
     					<div class= {style.gridchild2 }> <button-right><i class="fa fa-edit"></i></button-right></div>
