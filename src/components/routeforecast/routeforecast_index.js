@@ -7,11 +7,13 @@ export default class Routeforecast extends Component {
 	componentDidMount() {
 		if(document.getElementById("details")){
 			var element = document.getElementById("details");
-		    element.id = this.props.detailsid;
+			this.state.detailsid = this.props.num + "d";
+		    element.id = this.state.detailsid;
 	    }
 	    if(document.getElementById("icon")){
-	    	var icon = document.getElementById("icon");
-	    	icon.id = this.props.iconid;
+	    	var element = document.getElementById("icon");
+	    	this.state.iconid = this.props.num + "i";
+	    	element.id = this.state.iconid;
 	    }
 	}
 
@@ -216,17 +218,16 @@ export default class Routeforecast extends Component {
 	}
 
 	expand() {
-	    var element = document.getElementById(this.props.detailsid);
+	    var element = document.getElementById(this.state.detailsid);
 	    if (element.style.display === "none") {
 	        element.style.display = "inline-block";
 	    } else {
 	        element.style.display = "none";
 	    }
 
-		var icon = document.getElementById(this.props.iconid);
+		var icon = document.getElementById(this.state.iconid);
 		if(icon.className == "fa fa-chevron-circle-down") {
 			icon.className = "fa fa-chevron-circle-up";
-			console.log(icon.className);
 		} else {
 			icon.className = "fa fa-chevron-circle-down";
 		}
