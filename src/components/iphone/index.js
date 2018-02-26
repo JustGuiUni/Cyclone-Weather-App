@@ -182,23 +182,31 @@ export default class Iphone extends Component {
 		return w;		
 	}
 
-	isPostcodeCheck = () =>{
- 		var postcodeRE = /(\D[\D])(\d[\d]) ?(\d[\d])(\D[\D])/;
- 		var postcodeChecked = postcodeRE.exec(this.state.postcodeVal);
+	// isPostcodeCheck = () =>{
+ // 		var postcodeRE = /([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))\s?[0-9][A-Za-z]{2})/;
+ // 		var postcodeChecked = postcodeRE.exec(this.state.postcodeVal);
+ // 		console.log("postcodeChecked: " +postcodeChecked);
+ // 		var isJustAPostcode = this.state.postcodeVal.replace(postcodeChecked, '');
+ // 		console.log("isJustAPostcode: " +isJustAPostcode);
  
- 		if (postcodeChecked == null) {
- 			this.placeSearch();
- 		} else {
- 			this.postcodeSearch();
- 		}
+ // 		if (isJustAPostcode == null) {
+ // 			console.log("Is a postcode");
+ // 			this.postcodeSearch();
+ // 		} else {
+ // 			console.log("Is a place");
+ // 			this.placeSearch();
+ // 		}
  
- 	}
+ // 	}
 
-	// The below function makes a call to postcodes.io based on the postcode value inputed by the user. 
-	// It also then calls the fetchWeatherData function.
-	postcodeSearch = () =>{
-		
-		var postcode = this.state.postcodeVal;
+	// // The below function makes a call to postcodes.io based on the postcode value inputed by the user. 
+	// // It also then calls the fetchWeatherData function.
+	postcodeSearch(){
+
+		var postcodeRE = /([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))\s?[0-9][A-Za-z]{2})/;
+ 		var postcode = postcodeRE.exec(this.state.postcodeVal);
+ 		postcode = postcode[0];
+
 		console.log(postcode);
 
 		var url = "https://api.postcodes.io/postcodes/" + postcode;
@@ -219,7 +227,7 @@ export default class Iphone extends Component {
 
 	}
 
-	placeSearch(){
+	placeSearch = () =>{
  		
 		var place = this.state.postcodeVal;
 	 
@@ -233,6 +241,11 @@ export default class Iphone extends Component {
 		console.log(xhr.responseText);
 	 
 		var JSONresponse = JSON.parse(xhr.responseText);
+
+		if (JSONresponse[0] == undefined) {
+			this.postcodeSearch();
+			return;
+		}
 	 
 		for (var i = 0; i <= JSONresponse.length; i++) {
 			console.log(JSONresponse[i]['display_name']);
@@ -250,7 +263,7 @@ export default class Iphone extends Component {
 
 	// This function reads data from the text input on any update and sets the class variable postcode to that value. 
 	updateInputValue(evt){
-	    this.state.postcodeVal = evt.target.value + " London";
+	    this.state.postcodeVal = evt.target.value;
 	    console.log(this.state.postcodeVal);
 	}
 
@@ -276,7 +289,7 @@ export default class Iphone extends Component {
 					
 					{/* Update text input and coordinates when user makes a search*/}
 					<homesearch><input type="text" placeholder="Search Location..." id="searchField"  onChange ={ this.updateInputValue }></input></homesearch>
-					<Search clickFunction ={ this.isPostcodeCheck } />	
+					<Search clickFunction ={ this.placeSearch } />	
 						
 					{/* Settings button has no functionality currently */}
 					<buttonright><i class="fa fa-cog"></i></buttonright>	
