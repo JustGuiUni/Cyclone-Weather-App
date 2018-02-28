@@ -154,7 +154,7 @@ export default class Iphone extends Component {
 			} else {
 				i = "wi wi-night-alt-cloudy";
 			}
-		}		
+		}
 		return [c,i];
 	}
 
@@ -179,7 +179,7 @@ export default class Iphone extends Component {
 			w = "N";
 		}
 
-		return w;		
+		return w;
 	}
 
 	// isPostcodeCheck = () =>{
@@ -188,7 +188,7 @@ export default class Iphone extends Component {
  // 		console.log("postcodeChecked: " +postcodeChecked);
  // 		var isJustAPostcode = this.state.postcodeVal.replace(postcodeChecked, '');
  // 		console.log("isJustAPostcode: " +isJustAPostcode);
- 
+
  // 		if (isJustAPostcode == null) {
  // 			console.log("Is a postcode");
  // 			this.postcodeSearch();
@@ -196,10 +196,10 @@ export default class Iphone extends Component {
  // 			console.log("Is a place");
  // 			this.placeSearch();
  // 		}
- 
+
  // 	}
 
-	// // The below function makes a call to postcodes.io based on the postcode value inputed by the user. 
+	// // The below function makes a call to postcodes.io based on the postcode value inputed by the user.
 	// // It also then calls the fetchWeatherData function.
 	postcodeSearch(){
 
@@ -228,25 +228,25 @@ export default class Iphone extends Component {
 	}
 
 	placeSearch = () =>{
- 		
+
 		var place = this.state.postcodeVal;
-	 
+
 		console.log(place);
-	 
+
 		var url = "https://nominatim.openstreetmap.org/search?q=" + place + "&format=jsonv2";
-	 
+
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", url, false);
 		xhr.send();
 		console.log(xhr.responseText);
-	 
+
 		var JSONresponse = JSON.parse(xhr.responseText);
 
 		if (JSONresponse[0] == undefined) {
 			this.postcodeSearch();
 			return;
 		}
-	 
+
 		for (var i = 0; i <= JSONresponse.length; i++) {
 			console.log(JSONresponse[i]['display_name']);
 			var checkString = JSONresponse[i]['display_name'];
@@ -254,14 +254,14 @@ export default class Iphone extends Component {
 				this.state.lon = JSONresponse[0]['lon'];
 				this.state.lat = JSONresponse[0]['lat'];
 				break;
-			}	
+			}
 		};
-	 
+
 	 	this.fetchWeatherData();
- 
+
  	}
 
-	// This function reads data from the text input on any update and sets the class variable postcode to that value. 
+	// This function reads data from the text input on any update and sets the class variable postcode to that value.
 	updateInputValue(evt){
 	    this.state.postcodeVal = evt.target.value;
 	    console.log(this.state.postcodeVal);
@@ -283,39 +283,39 @@ export default class Iphone extends Component {
 		return (
 			<div class ={ style.container }>
 				<div class={ style_topnav.container }>
-					
+
 					{/* Reset coordinates when user presses the crosshair button */}
 					<Relocate clickFunction={ this.resetCoordinates }/>
-					
+
 					{/* Update text input and coordinates when user makes a search*/}
-					<input class={ style_topnav.input }  type="location" placeholder="Search Location..." id="searchField"  onChange ={ this.updateInputValue }></input>
-					<Search clickFunction ={ this.placeSearch }/>	
-						
+					<homesearch><input type="text" placeholder="Search Location..." id="searchField"  onChange ={ this.updateInputValue }></input></homesearch>
+					<Search clickFunction ={ this.z } />
+
 					{/* Settings button has no functionality currently */}
-					<div class={ style_topnav.buttonright }><i class="fa fa-cog"></i></div>	
+					<buttonright><i class="fa fa-cog"></i></buttonright>
 				</div>
-			
-				<div class={ style.homepage }>
-					<div class={ style.current }>
-						<div class={ style.weatherlocation }> {this.state.locate} </div>				
-						<div class={ style.weatheriandc }>
-							<div class={ style.weathericon }><i class= {this.state.icon}></i></div><br />
-							<div class={ style.weatherconditions }>{this.state.cond}</div>
-						</div>
-						
+
+				<homepage>
+					<current>
+						<weather-location> {this.state.locate} </weather-location>
+						<weather-iandc>
+							<weather-icon><i class= {this.state.icon}></i></weather-icon><br />
+							<weather-conditions>{this.state.cond}</weather-conditions>
+						</weather-iandc>
+
 						{/* Display temperature, wind speed, wind direction*/}
-						<div class={ style.weathertext }> 
-							<br /><div class={ style.subicon }><i class="fa fa-thermometer"></i></div>{this.state.temp} 
-							<br /><div class={ style.subicon }><i class ="wi wi-strong-wind"></i></div>{this.state.winds} 
-							<br /><div class={ style.subicon }><i class="fa fa-compass"></i></div>{this.state.windd}
-						</div>
-					</div>
+						<weather-text>
+							<br /><sub-icon><i class="fa fa-thermometer"></i></sub-icon>{this.state.temp}
+							<br /><sub-icon><i class ="wi wi-strong-wind"></i></sub-icon>{this.state.winds}
+							<br /><sub-icon><i class="fa fa-compass"></i></sub-icon>{this.state.windd}
+						</weather-text>
+					</current>
 
 					{/* Elements containing route weather information */}
 					<Routeforecast title="Your Next Commute" lon1="-0.1" lat1="51.463" lon2="-0.037" lat2="51.520" name1="Home" name2="QMUL" time1="09:00:00" time2="09:00:00" timed1="8am" timed2="9am" num="1"/>
 					<Routeforecast title="Gym" lon1= "-0.037" lat1="51.520" lon2="-0.219" lat2="51.516" name1="QMUL" name2="Gym" time1="15:00:00" time2="18:00:00" timed1="5pm" timed2="6pm" num="2"/>
 					<Routeforecast title="Home" lon1= "-0.219" lat1="51.516" lon2="-0.099" lat2="51.463" name1="Gym" name2="Home" time1="21:00:00" time2="21:00:00" timed1="8pm" timed2="9pm" num="3"/>
-				</div>
+				</homepage>
 			</div>
 		)
 	}

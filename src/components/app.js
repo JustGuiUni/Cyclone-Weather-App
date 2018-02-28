@@ -7,6 +7,7 @@ import { Link } from 'preact-router';
 import Iphone from './iphone';
 import Route from './routes';
 import Bottomnav from './bottomnav';
+import Hourly from './hourly';
 
 import style from './iphone/style';
 
@@ -26,7 +27,7 @@ export default class App extends Component {
 				<div id="app">
 					<Router onChange={this.handleRoute}>
 						<Iphone path = "/index" />
-						<Iphone path = "/" />
+						<Hourly path = "/hourly" />
 						<Route path = "/routes" />
 					</Router>
 
