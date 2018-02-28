@@ -7,6 +7,7 @@ import { Link } from 'preact-router';
 import Iphone from './iphone';
 import Route from './routes';
 import Bottomnav from './bottomnav';
+import Radar from './rain-radar';
 
 import style from './iphone/style';
 
@@ -28,6 +29,7 @@ export default class App extends Component {
 						<Iphone path = "/index" />
 						<Iphone path = "/" />
 						<Route path = "/routes" />
+						<Radar path = "/rain-radar" />
 					</Router>
 
 					<Bottomnav/>
