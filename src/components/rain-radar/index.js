@@ -40,8 +40,8 @@ export default class Radar extends Component {
           <p> Search live rainfall information </p>
         </div>
         <div class = {style.container}>
-          <div class = {style.buttonplus}><i class="far fa-plus-square"></i></div>
-          <div class = {style.buttonminus}><i class="far fa-minus-square"></i></div>
+          <div class = {style.buttonplus}><i class="fa fa-plus-square"></i></div>
+          <div class = {style.buttonminus}><i class="fa fa-minus-square"></i></div>
         </div>
 
 
