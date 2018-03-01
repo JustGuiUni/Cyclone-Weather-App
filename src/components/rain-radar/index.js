@@ -36,10 +36,12 @@ export default class Radar extends Component {
 
       <div class = {style_iphone.homepage}>
 
+        <div class = {style.heading}>
+          <p> Search live rainfall information </p>
+        </div>
         <div class = {style.container}>
-
-            
-
+          <div class = {style.buttonplus}><i class="far fa-plus-square"></i></div>
+          <div class = {style.buttonminus}><i class="far fa-minus-square"></i></div>
         </div>
 
 

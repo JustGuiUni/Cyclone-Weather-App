@@ -1,6 +1,49 @@
+@import '~style/helpers';
 
 .container {
+  background-image: url("../../assets/map/weather-map2.jpg");
+  position: relative;
+  margin: auto;
+  //margin-left: 5px;
+  //margin-right: 5px;
+  height: 571px;
+  max-width: 414px;
+  overflow-y: hidden;
+}
 
+.heading {
+  padding: 5px;
+  p {
+    text-align: left;
+    margin-left: 10px;
+    font-size: 1.5em;
+  }
 
-  background-color: black;
+}
+
+.buttonplus {
+  position: absolute;
+  float: right;
+  z-index: 1;
+  top: 40px;
+  right: 25px;
+  font-size: 2em;
+
+  &:hover, &:active {
+    background: #966fd6;
+  }
+
+}
+
+.buttonminus {
+  position: absolute;
+  top: 70px;
+  right: 25px;
+  float: right;
+  z-index: 2;
+  font-size: 2em;
+
+  &:hover, &:active {
+    background: #966fd6;
+  }
 }
