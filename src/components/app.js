@@ -9,6 +9,7 @@ import { Link } from 'preact-router';
 import Iphone from './iphone';
 import Route from './routes';
 import Bottomnav from './bottomnav';
+import Hourly from './hourly';
 
 // import stylesheet for iphone
 import style from './iphone/style';
@@ -31,6 +32,7 @@ export default class App extends Component {
 						<Iphone path = "/index" />
 						<Iphone path = "/" />
 						<Route path = "/routes" />
+						<Hourly path = "/hourly"/>
 					</Router>
 
 					<Bottomnav/>

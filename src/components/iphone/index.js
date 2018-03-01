@@ -22,7 +22,6 @@ export default class Iphone extends Component {
 		this.state.temp = "";
 		this.state.lon = "-0.03749985";
 		this.state.lat = "51.520497918";
-		this.state.icon = "";
 		this.updateInputValue = this.updateInputValue.bind(this);
 	}
 
