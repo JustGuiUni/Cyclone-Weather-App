@@ -62,6 +62,7 @@ export default class Iphone extends Component {
 			winds : wind_speed + "m/s",
 			windd: wind_direction
 		});
+		console.log(this.state.locate)
 	}
 
 
