@@ -89,8 +89,6 @@ export default class Hourly extends Component {
     var postcode = postcodeRE.exec(this.state.postcodeVal);
     postcode = postcode[0];
 
-    console.log(postcode);
-
     var url = "https://api.postcodes.io/postcodes/" + postcode;
 
     var xhr = new XMLHttpRequest();
@@ -106,7 +104,6 @@ export default class Hourly extends Component {
     console.log(this.state.lat);
 
     this.fetchHourlyData();
-    console.log("postcode")
   }
 
   // makes a call to nominatim.openstreetmap.org based on the location entered by the user
@@ -114,9 +111,7 @@ export default class Hourly extends Component {
   // if not a postcode, parses this location into lat and lon values
   placeSearch = () =>{
     var place = this.state.postcodeVal;
-   
-    console.log(place);
-   
+      
     var url = "https://nominatim.openstreetmap.org/search?q=" + place + "&format=jsonv2";
    
     var xhr = new XMLHttpRequest();
@@ -142,7 +137,6 @@ export default class Hourly extends Component {
     };
    
     this.fetchHourlyData();
-    console.log("place");
   }
 
   // reads data from the text input on any update and sets the class variable "postcodeVal" to that value. 
@@ -156,7 +150,6 @@ export default class Hourly extends Component {
     this.state.lon = "-0.03749985";
     this.state.lat = "51.520497918";
     this.fetchHourlyData();
-    console.log("reset");
   }
 
   // the main render method for the routes component
