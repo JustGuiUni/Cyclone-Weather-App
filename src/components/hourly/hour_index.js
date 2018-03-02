@@ -19,8 +19,6 @@ export default class Hourly extends Component {
 			hour: (this.props.hr + this.props.num) % 24
 		})
 
-		console.log(this.state.hour)
-
 		if(this.state.hour == 12) {
 	    	this.state.time = "12pm";
 	    } else if(this.state.hour == 0) {
@@ -30,9 +28,7 @@ export default class Hourly extends Component {
 	    } else {
 	    	this.state.time = this.state.hour + "am";
 	    }
-	    console.log(this.state.current)
-	    console.log(this.state.forecast_list)
-	    console.log(this.props.hourly)
+
 	    this.parseHourlyWeather();
 	}
 
@@ -54,7 +50,11 @@ export default class Hourly extends Component {
 		var wind_speed = parsed_json['wind']['speed'];
 		var wind_direction = parsed_json['wind']['deg'];
 		var conditions = parsed_json['weather'][0]['id'];
-		if (parsed_json['dt'] < parsed_json['sys']['sunset']) {
+		var sunrise = parsed_json['sys']['sunrise'];
+		var sunset = parsed_json['sys']['sunset'];
+		var weather_time = parsed_json['dt'];
+		
+		if (sunrise < weather_time && weather_time < sunset) {
 			var sunstate = "d";
 		} else {
 			var sunstate = "n";
@@ -82,14 +82,11 @@ export default class Hourly extends Component {
 			this.parseCurrentWeather();
 			return;
 		}
-		console.log(this.state.hour)
+
 		var hour_group = (this.state.hour - (this.state.hour % 3));
-		console.log(hour_group)
 		if (hour_group == 24 ) {
 			hour_group = "00:00";
 		}
-
-		console.log(hour_group)
 
 		for (var i = 0; i < this.state.forecast_list.length; i++) {
 			if ((this.state.forecast_list[i]['dt_txt']).indexOf(hour_group + ":") > 0) {

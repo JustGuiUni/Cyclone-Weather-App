@@ -56,6 +56,7 @@ export default class Iphone extends Component {
 		var wind_speed = parsed_json['wind']['speed'];
 		var wind_direction = parsed_json['wind']['deg'];
 		var conditions = parsed_json['weather'][0]['id'];
+		var sunrise = parsed_json['sys']['sunrise'];
 		var sunset = parsed_json['sys']['sunset'];
 		var time = parsed_json['dt'];
 
@@ -78,89 +79,89 @@ export default class Iphone extends Component {
 
 	// Open Weather Map uses an id code to indicate weather conditions
 	// This function converts an id code into an English language description and sets the appropriate icon
-	parseConditions = (c, time, sunset) => {
+	parseConditions = (c, time, sunrise, sunset) => {
 		var i = "";
 
 		if (200 <= c && c <= 232){
 			c = "Thunderstorm";
-			if (time < sunset) {
+			if (sunrise < time && time < sunset) {
 				i = "wi wi-day-thunderstorm";
 			} else {
 				i = "wi wi-night-alt-thunderstorm";
 			}
 		} else if (300 <= c && c <= 321){
 			c = "Drizzle";
-			if (time < sunset) {
+			if (sunrise < time && time < sunset) {
 				i = "wi wi-day-showers";
 			} else {
 				i = "wi wi-night-alt-showers";
 			}
 		} else if (c == 500 || c == 520){
 			c = "Light Rain";
-			if (time < sunset) {
+			if (sunrise < time && time < sunset) {
 				i = "wi wi-day-showers";
 			} else {
 				i = "wi wi-night-alt-showers";
 			}
 		} else if (c == 501 || c == 521){
 			c = "Moderate Rain";
-			if (time < sunset) {
+			if (sunrise < time && time < sunset) {
 				i = "wi wi-day-showers";
 			} else {
 				i = "wi wi-night-alt-showers";
 			}
 		} else if ((502 <= c && c <= 504) || (522 <= c && c <= 531)){
 			c = "Heavy Rain";
-			if (time < sunset) {
+			if (sunrise < time && time < sunset) {
 				i = "wi wi-day-rain";
 			} else {
 				i = "wi wi-night-alt-rain";
 			}
 		} else if (c == 511){
 			c = "Freezing Rain";
-			if (time < sunset) {
+			if (sunrise < time && time < sunset) {
 				i = "wi wi-day-sleet";
 			} else {
 				i = "wi wi-night-alt-sleet";
 			}
 		} else if (600 <= c && c <= 622){
 			c = "Snow";
-			if (time < sunset) {
+			if (sunrise < time && time < sunset) {
 				i = "wi wi-day-snow";
 			} else {
 				i = "wi wi-night-alt-snow";
 			}
 		} else if (701 == c) {
 			c = "Mist";
-			if (time < sunset) {
+			if (sunrise < time && time < sunset) {
 				i = "wi wi-day-fog";
 			} else {
 				i = "wi wi-night-fog";
 			}
 		} else if (721 == c) {
 			c = "Haze";
-			if (time < sunset) {
+			if (sunrise < time && time < sunset) {
 				i = "wi wi-day-haze";
 			} else {
 				i = "wi wi-night-fog";
 			}
 		} else if (741 == c) {
 			c = "Fog";
-			if (time < sunset) {
+			if (sunrise < time && time < sunset) {
 				i = "wi wi-day-fog";
 			} else {
 				i = "wi wi-night-fog";
 			}
 		} else if (800 == c) {
 			c = "Clear Sky"
-			if (time < sunset) {
+			if (sunrise < time && time < sunset) {
 				i = "wi wi-day-sunny";
 			} else {
 				i = "wi wi-night-clear";
 			}
 		} else {
 			c = "Clouds";
-			if (time < sunset) {
+			if (sunrise < time && time < sunset) {
 				i = "wi wi-day-cloudy";
 			} else {
 				i = "wi wi-night-alt-cloudy";

@@ -65,7 +65,7 @@ export default class App extends Component {
 					{/* Implement the preact Router component to handle navigating between pages of the app */}
 					<Router onChange={this.handleRoute}>
 						<Iphone path = "/index" showTopNav = {this.showTopNav} lon={this.state.lon} lat={this.state.lat}/>
-						<Iphone path = "/" showTopNav = {this.showTopNav}/>
+						<Iphone path = "/" showTopNav = {this.showTopNav} lon={this.state.lon} lat={this.state.lat}/>
 						<Route path = "/routes" hideTopNav = {this.hideTopNav}/>
 						<Hourly path = "/hourly" showTopNav = {this.showTopNav} lon={this.state.lon} lat={this.state.lat}/>
 					</Router>
