@@ -29,7 +29,7 @@ export default class Hourly extends Component {
 	    	this.state.time = this.state.hour + "am";
 	    }
 
-	    this.parseHourlyWeather();
+	    //this.parseHourlyWeather();
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -84,9 +84,11 @@ export default class Hourly extends Component {
 		}
 
 		var hour_group = (this.state.hour - (this.state.hour % 3));
-		if (hour_group == 24 ) {
+		if (hour_group == 24 || hour_group == 0) {
 			hour_group = "00:00";
 		}
+
+		console.log(hour_group);
 
 		for (var i = 0; i < this.state.forecast_list.length; i++) {
 			if ((this.state.forecast_list[i]['dt_txt']).indexOf(hour_group + ":") > 0) {

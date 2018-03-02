@@ -22,7 +22,7 @@ export default class Iphone extends Component {
     		lon: this.props.lon,
     		lat: this.props.lat
     	})
-        this.fetchWeatherData();
+    	this.fetchWeatherData();
     }
 
     componentWillReceiveProps(nextProps) {

@@ -11,6 +11,7 @@ import Iphone from './iphone';
 import Route from './routes';
 import Hourly from './hourly';
 import Bottomnav from './bottomnav';
+import Radar from './rain-radar';
 
 // import stylesheet for iphone
 import style from './iphone/style';
@@ -66,8 +67,9 @@ export default class App extends Component {
 					<Router onChange={this.handleRoute}>
 						<Iphone path = "/index" showTopNav = {this.showTopNav} lon={this.state.lon} lat={this.state.lat}/>
 						<Iphone path = "/" showTopNav = {this.showTopNav} lon={this.state.lon} lat={this.state.lat}/>
-						<Route path = "/routes" hideTopNav = {this.hideTopNav}/>
 						<Hourly path = "/hourly" showTopNav = {this.showTopNav} lon={this.state.lon} lat={this.state.lat}/>
+						<Route path = "/routes" hideTopNav = {this.hideTopNav}/>
+						<Radar path = "/rain-radar" showTopNav = {this.showTopNav}/>
 					</Router>
 				</div>
 				<Bottomnav/>

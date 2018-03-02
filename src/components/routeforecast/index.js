@@ -9,14 +9,18 @@ import style from '../iphone/style';
 	
 export default class Routeforecast extends Component {
 
+	componentWillMount() {
+	    this.fetchForecastData();
+	}
+
 	// on component mount, assign dropdown button and expanding dropdown element an id unique to each instance of the component
 	// ensures dropdown buttons animate consistently and always display the correct elemtn when clicked
 	componentDidMount() {
-		if(document.getElementById("details")){
+		if (document.getElementById("details")){
 			var element = document.getElementById("details");
 		    element.id = this.state.detailsid;
 	    }
-	    if(document.getElementById("icon")){
+	    if (document.getElementById("icon")){
 	    	var element = document.getElementById("icon");
 	    	element.id = this.state.iconid;
 	    }
@@ -244,11 +248,6 @@ export default class Routeforecast extends Component {
 	// the main render method for the routeforecast component
 	render() {
 		
-		// fetch forecast data for the route on initial render
-		if (this.state.temp1 === "") {
-			this.fetchForecastData();
-		}
-
 		return (
 			<div class={ style.route }>
 				<div class={ style.name }>{this.props.title}</div>
