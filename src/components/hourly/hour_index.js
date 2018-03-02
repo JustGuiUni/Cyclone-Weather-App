@@ -12,10 +12,43 @@ export default class Hourly extends Component {
 		this.state.fetched = false;
 	}
 
+	componentWillMount() {
+		this.setState({
+			current: this.props.current,
+			forecast_list: this.props.hourly['list'],
+			hour: (this.props.hr + this.props.num) % 24
+		})
+
+		console.log(this.state.hour)
+
+		if(this.state.hour == 12) {
+	    	this.state.time = "12pm";
+	    } else if(this.state.hour == 0) {
+	    	this.state.time = "12am";
+	    } else if(this.state.hour >12) {
+	    	this.state.time = this.state.hour - 12 + "pm";
+	    } else {
+	    	this.state.time = this.state.hour + "am";
+	    }
+	    console.log(this.state.current)
+	    console.log(this.state.forecast_list)
+	    console.log(this.props.hourly)
+	    this.parseHourlyWeather();
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.current != this.props.current) {
+			this.setState({
+  				current: nextProps.current,
+  				forecast_list: nextProps.hourly['list']
+			})
+		}
+		this.parseHourlyWeather();
+	}
+
 	// parse relevant fields from Open Weather Map API resposne, for later rendering
 	parseCurrentWeather = () => {
-		var parsed_json = this.props.current;
-		console.log(this.props.current);
+		var parsed_json = this.state.current;
 		var location = parsed_json['name'];
 		var temp_c = Math.round((parsed_json['main']['temp']-273.15) * 10) / 10;
 		var wind_speed = parsed_json['wind']['speed'];
@@ -49,11 +82,14 @@ export default class Hourly extends Component {
 			this.parseCurrentWeather();
 			return;
 		}
-
+		console.log(this.state.hour)
 		var hour_group = (this.state.hour - (this.state.hour % 3));
-		if (hour_group == 0) {
+		console.log(hour_group)
+		if (hour_group == 24 ) {
 			hour_group = "00:00";
 		}
+
+		console.log(hour_group)
 
 		for (var i = 0; i < this.state.forecast_list.length; i++) {
 			if ((this.state.forecast_list[i]['dt_txt']).indexOf(hour_group + ":") > 0) {
@@ -61,7 +97,6 @@ export default class Hourly extends Component {
 				break;
 			}
 		}
-
 		var temp_c = Math.round((forecast['main']['temp']-273.15) * 10) / 10;
 		var wind_speed = forecast['wind']['speed'];
 		var wind_direction = forecast['wind']['deg'];
@@ -206,25 +241,6 @@ export default class Hourly extends Component {
 	}
 
 	render() {
-
-	    if(this.state.hour == 12) {
-	      this.state.time = "12pm";
-	    } else if(this.state.hour == 0) {
-	      this.state.time = "12am";
-	    } else if(this.state.hour >12) {
-	      this.state.time = this.state.hour - 12 + "pm";
-	    } else {
-	      this.state.time = this.state.hour + "am";
-	    }
-
-		this.state.hour = (this.props.hr + this.props.num)%24;
-		this.state.forecast_list = this.props.hourly['list'];
-		console.log(this.props.hourly["city"]["name"]);
-		console.log(this.state.forecast_list);
-
-		if(!this.state.fetched) {
-			this.parseHourlyWeather();
-		}
 
 		return(
 			<div class = { style_hourly.nested }>
