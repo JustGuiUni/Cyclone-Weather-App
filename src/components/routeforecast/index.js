@@ -6,7 +6,7 @@ import $ from 'jquery';
 
 // import stylesheet for iphone
 import style from '../iphone/style';
-	
+
 export default class Routeforecast extends Component {
 
 	componentWillMount() {
@@ -38,8 +38,8 @@ export default class Routeforecast extends Component {
 
 	// a call to fetch weather forecasts for each end of the route via open weather map
 	fetchForecastData = () => {
-		
-		var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.props.lat1 + "&lon=" + this.props.lon1 + "&appid=fb1dc4da37f9e2330043b353f437dea9";
+
+		var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.props.lat1 + "&lon=" + this.props.lon1 + "&appid=216628da4f8ec729d4e692d243d34ad5";
 		$.ajax({
 			url: url,
 			dataType: "json",
@@ -50,7 +50,7 @@ export default class Routeforecast extends Component {
 		console.log("Call Made")
 		this.state.count = 1;
 
-		url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.props.lat2 + "&lon=" + this.props.lon2 + "&appid=fb1dc4da37f9e2330043b353f437dea9";
+		url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.props.lat2 + "&lon=" + this.props.lon2 + "&appid=216628da4f8ec729d4e692d243d34ad5";
 		$.ajax({
 			url: url,
 			dataType: "json",
@@ -105,7 +105,7 @@ export default class Routeforecast extends Component {
 			this.state.winds2 = wind_speed + "m/s";
 			this.state.windd2 = wind_direction;
 			this.state.icon2 = icon;
-		}      
+		}
 	}
 
 
@@ -199,7 +199,7 @@ export default class Routeforecast extends Component {
 			} else {
 				i = "wi wi-night-alt-cloudy";
 			}
-		}		
+		}
 		return [c,i];
 	}
 
@@ -224,7 +224,7 @@ export default class Routeforecast extends Component {
 			w = "N";
 		}
 
-		return w;		
+		return w;
 	}
 
 	// sets the routedetails element to open when the dropdown button is clicked
@@ -247,7 +247,7 @@ export default class Routeforecast extends Component {
 
 	// the main render method for the routeforecast component
 	render() {
-		
+
 		return (
 			<div class={ style.route }>
 				<div class={ style.name }>{this.props.title}</div>
@@ -262,9 +262,9 @@ export default class Routeforecast extends Component {
 				<div class={ style.routetext }>{this.state.temp1}</div>
 				<div class={ style.routetext }>{this.state.temp2}</div>
 				<div class={ style.routedetails } id="details" style="display: none">
-						<div class={ style.detailtext }>{this.state.cond1}<br />{this.state.winds1}<br />{this.state.windd1}</div>
-						<div class={ style.detailicon }><i class="wi wi-strong-wind"/><br /><i class="fa fa-compass"/></div>
-						<div class={ style.detailtext }>{this.state.cond2}<br />{this.state.winds2}<br />{this.state.windd2}</div>
+					<div class={ style.detailtext }>{this.state.cond1}<br />{this.state.winds1}<br />{this.state.windd1}</div>
+					<div class={ style.detailicon }><i class="wi wi-strong-wind"/><br /><i class="fa fa-compass"/></div>
+					<div class={ style.detailtext }>{this.state.cond2}<br />{this.state.winds2}<br />{this.state.windd2}</div>
 				</div>
 			</div>
 		);

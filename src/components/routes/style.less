@@ -10,20 +10,21 @@
   position: relative;
   left: 0;
   top: 0;
-  background: #673AB7;
-  color: #EEE;
+  background: #00867d;
+  color: #2d676e;
+
 }
 
 .grid {
   display: grid;
     grid-template-columns: 4fr 1fr;
-    border-radius: 15px;
-  background: #966fd6;
-    padding: 20px;
+    border-radius: 10px;
+  background: rgba(217, 244, 244, .9);
+    padding: 10px;
     margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
   font-family: "Tahoma", Geneva, sans-serif;
+  color: #2d676e;
+
 }
 .gridchild1 {
     grid-column-start: 1;
@@ -42,11 +43,13 @@
     line-height: 56px;
     padding: 10px 10px 10px 10px;
     min-width: 30px;
-    color: #EEE;
+    color: #2d676e;
+
     font-size: 1.5em;
     margin-left: 20px;
     &:hover, &:active {
-      background: rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.3);
+      border-radius:10px;
     }
   }
 }
@@ -62,7 +65,7 @@
 .plusbutton {
     button-left {
       float: left;
-      background: rgba(255,255,255,0);
+      background: rgba(77, 182, 172, 1);
       height: auto;
       width: 100%;
       text-align: left;
@@ -70,8 +73,11 @@
       color: #EEE;
       will-change: background-color;
       font-size: 2em;
+      border-radius:10px;
+
       &:hover, &:active {
-            background: rgba(255,255,255,0.1);
+        background: rgba(255,255,255,0.3);
+        border-radius:10px;
         }
     }
     text-add {
