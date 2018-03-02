@@ -35,7 +35,7 @@ export default class Routeforecast extends Component {
 	// a call to fetch weather forecasts for each end of the route via open weather map
 	fetchForecastData = () => {
 		
-		var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.props.lat1 + "&lon=" + this.props.lon1 + "&appid=d237a7f64a603e590c18e8f7479ed65c";
+		var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.props.lat1 + "&lon=" + this.props.lon1 + "&appid=fb1dc4da37f9e2330043b353f437dea9";
 		$.ajax({
 			url: url,
 			dataType: "json",
@@ -43,10 +43,10 @@ export default class Routeforecast extends Component {
 			success : this.parseForecastResponse,
 			error : function(req, err){ console.log('API call failed ' + err); }
 		})
-
+		console.log("Call Made")
 		this.state.count = 1;
 
-		url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.props.lat2 + "&lon=" + this.props.lon2 + "&appid=d237a7f64a603e590c18e8f7479ed65c";
+		url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.props.lat2 + "&lon=" + this.props.lon2 + "&appid=fb1dc4da37f9e2330043b353f437dea9";
 		$.ajax({
 			url: url,
 			dataType: "json",
@@ -54,7 +54,7 @@ export default class Routeforecast extends Component {
 			success : this.parseForecastResponse,
 			error : function(req, err){ console.log('API call failed ' + err); }
 		})
-
+		console.log("Call Made")
 		this.state.count =0;
 	}
 

@@ -59,7 +59,7 @@ export default class Hourly extends Component {
 
   fetchHourlyData = () => {
     
-    var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=d237a7f64a603e590c18e8f7479ed65c";
+    var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=fb1dc4da37f9e2330043b353f437dea9";
     $.ajax({
       url: url,
       dataType: "json",
@@ -67,10 +67,10 @@ export default class Hourly extends Component {
       success : this.storeJSON,
       error : function(req, err){ console.log('API call failed ' + err); }
     })
-    
+    console.log("Call Made")
     this.state.count =1;  
 
-    var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=d237a7f64a603e590c18e8f7479ed65c";
+    var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=fb1dc4da37f9e2330043b353f437dea9";
     $.ajax({
       url: url,
       dataType: "json",
@@ -78,7 +78,7 @@ export default class Hourly extends Component {
       success : this.storeJSON,
       error : function(req, err){ console.log('API call failed ' + err); }
     })
-
+    console.log("Call Made")
     this.state.count =0;
   }
 

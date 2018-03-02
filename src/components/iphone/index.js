@@ -38,7 +38,7 @@ export default class Iphone extends Component {
 	// a call to fetch weather data via open weather map
 	fetchWeatherData = () => {
 
-		var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=d237a7f64a603e590c18e8f7479ed65c";
+		var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=fb1dc4da37f9e2330043b353f437dea9";
 		console.log(url)
 		$.ajax({
 			url: url,
@@ -46,7 +46,7 @@ export default class Iphone extends Component {
 			success : this.parseResponse,
 			error : function(req, err){ console.log('API call failed ' + err); }
 		})
-
+		console.log("Call Made")
 	}
 
 	// parse relevant fields from Open Weather Map API resposne, for later rendering
