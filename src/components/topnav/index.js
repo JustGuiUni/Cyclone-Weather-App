@@ -90,6 +90,7 @@ export default class Topnav extends Component {
     updateInputValue(evt){
         this.state.postcodeVal = evt.target.value;
         console.log(this.state.postcodeVal);
+		evt.target.value = '';
     }
 
     // resets coordinates to default location when user presses the crosshair button
