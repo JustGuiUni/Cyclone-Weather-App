@@ -13,7 +13,7 @@
 	top: 0;
 	background: #d9f4f4;
 	color: #2d676e;
-	font-family: "Tahoma", Geneva, sans-serif;
+	font-family: 'Roboto', sans-serif;
 
 }
 
@@ -29,14 +29,18 @@
 }
 
 .weatherlocation {
+	margin-top:4px;
 	display: inline-block;
-	height: 60px;
+	height: 60px;	border-top-left-radius:10px;
+	float: left;
 	line-height: 60px;
-	min-width: 414px;
+	min-width: 402px;
 	font-size: 1.5em;
 	text-align: center;
 	background: #4db6ac;
 	color: #fff;
+	border-radius:10px;
+	box-shadow: 1px 2px rgba(137, 236, 251, .75);
 }
 
 .weatheriandc {
@@ -83,21 +87,31 @@
 	float: left;
 	height: 60px;
 	line-height: 60px;
-	min-width: 364px;
+	min-width: 349px;
 	padding-left: 50px;
 	background: #4db6ac;
 	color: #fff;
+	border-top-left-radius:10px;
+	border-bottom-left-radius:10px;
+	box-shadow: 1px 2px rgba(137, 236, 251, .75);
 
 }
 
 .dropdown {
 	position: relative;
-	float: right;
+	float: left;
 	height: 60px;
 	line-height: 60px;
 	min-width: 50px;
 	background: #4db6ac;
 	color: #fff;
+	border-top-right-radius:10px;
+	border-bottom-right-radius:10px;
+	box-shadow: 1px 2px rgba(137, 236, 251, .75);
+	&:hover, &:active {
+		background: rgba(109, 188, 200, 1);
+
+	}
 }
 
 .routetext {
@@ -105,6 +119,7 @@
 	width: 207px;
 	font-size: 0.6em;
 	line-height: 45px;
+
 }
 
 .routegraphics {
@@ -130,8 +145,6 @@
     height: 0px;
     width: 130px;
     border-bottom:solid 4px;
-;
-
 }
 
 .routedetails {

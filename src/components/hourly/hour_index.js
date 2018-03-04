@@ -243,14 +243,15 @@ export default class Hourly extends Component {
 
 		return(
 			<div class = { style_hourly.nested }>
-    	        <div>{this.state.time}</div>
-	            <div><i class={ this.state.icon }/></div>
-	            <div>{ this.state.cond }</div>
-	            <div><i class="fa fa-thermometer"></i></div>
-	            <div>{ this.state.temp }</div>
-	            <div><i class="wi wi-strong-wind"></i></div>
-	            <div>{ this.state.winds } { this.state.windd }</div>
-            </div>
+				<div>{this.state.time}</div>
+				<div><i class={ this.state.icon }/></div>
+				<div>{ this.state.cond }</div>
+				<div><i class="fa fa-thermometer"></i></div>
+				<div>{ this.state.temp }</div>
+				<div><i class="wi wi-strong-wind"></i></div>
+				<div>{ this.state.winds } { this.state.windd }</div>
+				<div></div>
+			</div>
         );
 	}
 }

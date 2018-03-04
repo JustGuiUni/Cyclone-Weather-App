@@ -58,8 +58,7 @@ export default class Hourly extends Component {
   }
 
   fetchHourlyData = () => {
-
-    var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=216628da4f8ec729d4e692d243d34ad5";
+    var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=77637347dd30fe7831c5782342710ccf";
     $.ajax({
       url: url,
       dataType: "json",
@@ -70,7 +69,7 @@ export default class Hourly extends Component {
     console.log("Call Made")
     this.state.count =1;
 
-    var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=216628da4f8ec729d4e692d243d34ad5";
+    var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=77637347dd30fe7831c5782342710ccf";
     $.ajax({
       url: url,
       dataType: "json",
@@ -102,7 +101,6 @@ export default class Hourly extends Component {
     		<div class={ style.container }>
 
           <div class={ style.homepage }>
-
             <div class= { style_hourly.wrapper }>
               <div> <p class = { style_hourly.location }> {this.state.locate} </p> {this.state.today[0]}, {this.state.today[1]} {this.state.today[2]}</div>
               <Hour hr={this.state.hr} num={0} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>

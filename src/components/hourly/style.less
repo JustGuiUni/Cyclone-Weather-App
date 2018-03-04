@@ -3,20 +3,27 @@
 .wrapper{
       display:grid;
       grid-template-columns: 1fr;
-      grid-row-gap: 0.25em;
-      font-family: "Tahoma", Geneva, sans-serif;
+      grid-row-gap: 0.3em;
+      font-family: 'Roboto', sans-serif;
       color: #2d676e;
       background-color: #00867d;
+
 }
+
 
 .location{
     font-size: 20px;
+    margin:7px;
+    font-family: 'Roboto', sans-serif;
 }
+
 .nested{
     display:inline-grid;
-    grid-template-columns: 0.75fr 0.5fr 1fr 0.2fr 0.5fr 0.4fr 1fr 0.25fr;
+    grid-template-columns: 0.75fr 0.5fr 1fr 0.2fr 0.5fr 0.4fr .8fr 0.2fr;
+    align-items: center;
     padding: 1em;
     border-radius:10px;
+  	box-shadow: 1px 2px rgba(137, 236, 251, .75);
     background-color: #4db6ac;
 }
 
@@ -26,11 +33,13 @@
 }
 
 .wrapper >div:first-child{
-  height: 6em;
+  height: 4em;
   background: #4db6ac;
   float: left;
-  padding-bottom:1em;
-  border-radius: 15px;
+  margin-top: 5px;
+  padding-bottom:2em;
+  border-radius:10px;
+	box-shadow: 1px 2px rgba(137, 236, 251, .75);
   color: #fff;
 }
 
