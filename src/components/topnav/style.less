@@ -68,3 +68,35 @@
         margin-left: 15px;
         border-radius: 15px;
 }
+
+.error{
+	position: absolute;
+	border-radius: 20px;
+	top: 300%;
+	left: 82px;
+	background: white;
+	opacity: 0.95;
+	height: 220px;
+	width: 250px;
+	line-height: 30px;
+	text-align: center;
+	padding-top: 30px;
+
+	okbutton {
+		margin-top: 20px;
+		position: absolute;
+		line-height: 50px;
+		left: 75px;
+		width: 100px;
+		border-style: solid;
+		border-color: #00867d;
+		border-radius: 20px;
+
+		will-change: background-color, color;
+
+		&:hover, &:active {
+			background: #4db6ac;
+			color: #fff;
+		}
+	}
+}
