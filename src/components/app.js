@@ -63,7 +63,7 @@ export default class App extends Component {
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css"></link>
 				<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"></link>
 
-				<div id="app">
+				<div>
 					{/* Implement the preact Router component to handle navigating between pages of the app */}
 					<Router onChange={this.handleRoute}>
 						<Iphone path = "/index" showTopNav = {this.showTopNav} lon={this.state.lon} lat={this.state.lat}/>
