@@ -39,7 +39,7 @@ export default class Routeforecast extends Component {
 	// a call to fetch weather forecasts for each end of the route via open weather map
 	fetchForecastData = () => {
 
-		var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.props.lat1 + "&lon=" + this.props.lon1 + "&appid=216628da4f8ec729d4e692d243d34ad5";
+		var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.props.lat1 + "&lon=" + this.props.lon1 + "&appid=ddc4c459b28204945d52884ab709111a";
 		$.ajax({
 			url: url,
 			dataType: "json",
@@ -50,7 +50,7 @@ export default class Routeforecast extends Component {
 		console.log("Call Made")
 		this.state.count = 1;
 
-		url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.props.lat2 + "&lon=" + this.props.lon2 + "&appid=216628da4f8ec729d4e692d243d34ad5";
+		url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.props.lat2 + "&lon=" + this.props.lon2 + "&appid=ddc4c459b28204945d52884ab709111a";
 		$.ajax({
 			url: url,
 			dataType: "json",
