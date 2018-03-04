@@ -61,6 +61,7 @@ export default class App extends Component {
 				{/* External stylesheets with icons for interface elements and weather display, accessible throughout the app */}
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css"></link>
+				<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"></link>
 
 				<div>
 					{/* Implement the preact Router component to handle navigating between pages of the app */}

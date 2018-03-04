@@ -101,7 +101,6 @@ export default class Hourly extends Component {
     		<div class={ style.container }>
 
           <div class={ style.homepage }>
-
             <div class= { style_hourly.wrapper }>
               <div> <p class = { style_hourly.location }> {this.state.locate} </p> {this.state.today[0]}, {this.state.today[1]} {this.state.today[2]}</div>
               <Hour hr={this.state.hr} num={0} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
