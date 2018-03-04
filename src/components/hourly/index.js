@@ -58,7 +58,6 @@ export default class Hourly extends Component {
   }
 
   fetchHourlyData = () => {
-    
     var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=ddc4c459b28204945d52884ab709111a";
     $.ajax({
       url: url,
@@ -68,7 +67,7 @@ export default class Hourly extends Component {
       error : function(req, err){ console.log('API call failed ' + err); }
     })
     console.log("Call Made")
-    this.state.count =1;  
+    this.state.count =1;
 
     var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=ddc4c459b28204945d52884ab709111a";
     $.ajax({
@@ -104,7 +103,7 @@ export default class Hourly extends Component {
           <div class={ style.homepage }>
 
             <div class= { style_hourly.wrapper }>
-              <div> {this.state.locate} <br /> {this.state.today[0]}, {this.state.today[1]} {this.state.today[2]}</div>
+              <div> <p class = { style_hourly.location }> {this.state.locate} </p> {this.state.today[0]}, {this.state.today[1]} {this.state.today[2]}</div>
               <Hour hr={this.state.hr} num={0} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
               <Hour hr={this.state.hr} num={1} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
               <Hour hr={this.state.hr} num={2} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>

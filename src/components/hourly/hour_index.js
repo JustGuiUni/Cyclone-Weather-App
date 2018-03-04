@@ -53,7 +53,7 @@ export default class Hourly extends Component {
 		var sunrise = parsed_json['sys']['sunrise'];
 		var sunset = parsed_json['sys']['sunset'];
 		var weather_time = parsed_json['dt'];
-		
+
 		if (sunrise < weather_time && weather_time < sunset) {
 			var sunstate = "d";
 		} else {
@@ -211,7 +211,7 @@ export default class Hourly extends Component {
 			} else {
 				i = "wi wi-night-alt-cloudy";
 			}
-		}		
+		}
 		return [c,i];
 	}
 
@@ -236,7 +236,7 @@ export default class Hourly extends Component {
 			w = "N";
 		}
 
-		return w;		
+		return w;
 	}
 
 	render() {

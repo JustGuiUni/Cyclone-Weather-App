@@ -166,7 +166,7 @@ export default class Iphone extends Component {
 			} else {
 				i = "wi wi-night-alt-cloudy";
 			}
-		}		
+		}
 		return [c,i];
 	}
 
@@ -191,7 +191,7 @@ export default class Iphone extends Component {
 			w = "N";
 		}
 
-		return w;		
+		return w;
 	}
 
 	// the main render method for the iphone component
@@ -199,20 +199,20 @@ export default class Iphone extends Component {
 
 		return (
 			<div class ={ style.container }>
-				
+
 				{/* Current weather at specified location */ }
 				<div class={ style.homepage }>
 					<div class={ style.current }>
-						<div class={ style.weatherlocation }> {this.state.locate} </div>				
+						<div class={ style.weatherlocation }> {this.state.locate} </div>
 						<div class={ style.weatheriandc }>
 							<div class={ style.weathericon }><i class= {this.state.icon}></i></div><br />
 							<div class={ style.weatherconditions }>{this.state.cond}</div>
 						</div>
-						
+
 						{/* Display temperature, wind speed, wind direction*/}
-						<div class={ style.weathertext }> 
-							<br /><div class={ style.subicon }><i class="fa fa-thermometer"></i></div>{this.state.temp} 
-							<br /><div class={ style.subicon }><i class ="wi wi-strong-wind"></i></div>{this.state.winds} 
+						<div class={ style.weathertext }>
+							<br /><div class={ style.subicon }><i class="fa fa-thermometer"></i></div>{this.state.temp}
+							<br /><div class={ style.subicon }><i class ="wi wi-strong-wind"></i></div>{this.state.winds}
 							<br /><div class={ style.subicon }><i class="fa fa-compass"></i></div>{this.state.windd}
 						</div>
 					</div>
