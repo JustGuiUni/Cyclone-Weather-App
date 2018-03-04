@@ -58,7 +58,7 @@ export default class Hourly extends Component {
   }
 
   fetchHourlyData = () => {
-    var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=ddc4c459b28204945d52884ab709111a";
+    var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=d237a7f64a603e590c18e8f7479ed65c";
     $.ajax({
       url: url,
       dataType: "json",
@@ -69,7 +69,7 @@ export default class Hourly extends Component {
     console.log("Call Made")
     this.state.count =1;
 
-    var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=ddc4c459b28204945d52884ab709111a";
+    var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=d237a7f64a603e590c18e8f7479ed65c";
     $.ajax({
       url: url,
       dataType: "json",
