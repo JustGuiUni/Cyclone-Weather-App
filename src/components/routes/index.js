@@ -8,22 +8,11 @@ import style_iphone from '../iphone/style';
 
 export default class Route extends Component {
 
-    componentWillMount() {
-        this.props.hideTopNav();
-    }
-
     // the main render method for the routes component
 	render() {
 
 		return (
     		<div class={ style.container }>
-
-
-		      	<div class={ style_topnav.container }>
-		        	<input class={ style_topnav.input } type="route" placeholder="Search my routes..." id="searchField"></input>
-		        	<div class={ style_topnav.buttonleft }><a><i class="fa fa-search" id="searchButton"></i></a></div>
-		      	</div>
-
 
                 <div class={ style.plusbutton }>
                     <button-left><i class="fa fa-plus-circle" id="addRoute"> <text-add>Add Route</text-add></i></button-left><br />
