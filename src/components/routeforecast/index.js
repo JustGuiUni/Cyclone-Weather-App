@@ -47,7 +47,7 @@ export default class Routeforecast extends Component {
 			success : this.parseForecastResponse,
 			error : function(req, err){ console.log('API call failed ' + err); }
 		})
-		console.log("Call Made")
+		console.log("Call Made - start of route")
 		this.state.count = 1;
 
 		url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.props.lat2 + "&lon=" + this.props.lon2 + "&appid=d237a7f64a603e590c18e8f7479ed65c";
@@ -58,7 +58,7 @@ export default class Routeforecast extends Component {
 			success : this.parseForecastResponse,
 			error : function(req, err){ console.log('API call failed ' + err); }
 		})
-		console.log("Call Made")
+		console.log("Call Made - end of route")
 		this.state.count =0;
 	}
 
