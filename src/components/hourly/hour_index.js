@@ -28,8 +28,6 @@ export default class Hourly extends Component {
 	    } else {
 	    	this.state.time = this.state.hour + "am";
 	    }
-
-	    //this.parseHourlyWeather();
 	}
 
 	componentWillReceiveProps(nextProps) {
