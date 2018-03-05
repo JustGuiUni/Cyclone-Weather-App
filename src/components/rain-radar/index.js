@@ -7,10 +7,6 @@ import style_topnav from '../topnav/style';
 
 export default class Radar extends Component {
 
-  componentWillMount() {
-    this.props.showTopNav();
-  }
-
   render () {
 
     return(
