@@ -17,7 +17,6 @@ import Search from '../topnav/search_index';
 export default class Iphone extends Component {
 
     componentWillMount() {
-        this.props.showTopNav();
     	this.setState({
     		lon: this.props.lon,
     		lat: this.props.lat
@@ -46,7 +45,7 @@ export default class Iphone extends Component {
 			success : this.parseResponse,
 			error : function(req, err){ console.log('API call failed ' + err); }
 		})
-		console.log("Call Made")
+		console.log("Call Made - Main Weather")
 	}
 
 	// parse relevant fields from Open Weather Map API resposne, for later rendering
