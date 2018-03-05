@@ -26,18 +26,6 @@ export default class App extends Component {
 		this.state.lat = "51.520497918";
     }
 
-    hideTopNav = () => {
-    	this.setState({
-    		showNav: false,
-    	})
-    }
-
-    showTopNav = () => {
-    	this.setState({
-    		showNav: true,
-    	})
-    }
-
     updateLocation = (newLon, newLat) => {
     	this.setState({
     		lon: newLon,
@@ -65,11 +53,11 @@ export default class App extends Component {
 				<div>
 					{/* Implement the preact Router component to handle navigating between pages of the app */}
 					<Router onChange={this.handleRoute}>
-						<Iphone path = "/index" showTopNav = {this.showTopNav} lon={this.state.lon} lat={this.state.lat}/>
-						<Iphone path = "/" showTopNav = {this.showTopNav} lon={this.state.lon} lat={this.state.lat}/>
-						<Hourly path = "/hourly" showTopNav = {this.showTopNav} lon={this.state.lon} lat={this.state.lat}/>
-						<Route path = "/routes" hideTopNav = {this.hideTopNav}/>
-						<Radar path = "/rain-radar" showTopNav = {this.showTopNav}/>
+						<Iphone path = "/index" lon={this.state.lon} lat={this.state.lat}/>
+						<Iphone path = "/" lon={this.state.lon} lat={this.state.lat}/>
+						<Hourly path = "/hourly" lon={this.state.lon} lat={this.state.lat}/>
+						<Route path = "/routes" />
+						<Radar path = "/rain-radar" />
 					</Router>
 				</div>
 				<Bottomnav/>
