@@ -13,29 +13,30 @@ export default class Route extends Component {
 
 		return (
     		<div class={ style.container }>
-                <div class={ style.plusbutton }>
-                    <button-left><i class="fa fa-plus-circle" id="addRoute"> <text-add>Add Route</text-add></i></button-left><br />
-	    	  	</div>
 
-                {/* Each grid element represents settings for a route, inputted by the user */}
-                <div class={ style_iphone.homepage }>
+
+					{/* Each grid element represents settings for a route, inputted by the user */}
+					<div class={ style_iphone.homepage }>
+						<div class={ style.plusbutton }>
+							<button-left><i class="fa fa-plus-circle" id="addRoute"> <text-add>Add Route</text-add></i></button-left><br />
+						</div>
     				<div class={ style.grid }>
     					<div class= {style.gridchild1 }><table class={ style.table }><tr><td><div class={ style.starchecked }>
-                        <span class="fa fa-star"></span></div></td></tr><tr><td>UNI</td><td>Start: Home</td></tr><tr><td>8 am</td><td>End: QMUL</td></tr></table></div>
+								<span class="fa fa-star"></span></div></td></tr><tr><td>UNI</td><td>Start: Home</td></tr><tr><td>8 am</td><td>End: QMUL</td></tr></table></div>
     					<div class= {style.gridchild2 }><button-right><i class="fa fa-edit" id="editroute"></i></button-right></div>
     				</div>
 
-					<div class={ style.grid }>
-						<div class= {style.gridchild1 }><table class={ style.table }><tr><td><div class={ style.starchecked }>
-                        <span class="fa fa-star"></span></div></td></tr><tr><td>GYM</td><td>Start: W12</td></tr><tr><td>6 pm</td><td>End: W18</td></tr></table></div>
-						<div class= {style.gridchild2 }> <button-right><i class="fa fa-edit"></i></button-right></div>
-          			</div>
+						<div class={ style.grid }>
+							<div class= {style.gridchild1 }><table class={ style.table }><tr><td><div class={ style.starchecked }>
+								<span class="fa fa-star"></span></div></td></tr><tr><td>GYM</td><td>Start: W12</td></tr><tr><td>6 pm</td><td>End: W18</td></tr></table></div>
+							<div class= {style.gridchild2 }> <button-right><i class="fa fa-edit"></i></button-right></div>
+						</div>
 
-					<div class={ style.grid }>
-						<div class= {style.gridchild1 }><table class={ style.table }><tr><td><div class={ style.starchecked }>
-                        <span class="fa fa-star"></span></div></td></tr><tr><td>HOME</td><td>Start: E16</td></tr><tr><td>6 pm</td><td>End: SE18</td></tr></table></div>
-						<div class= {style.gridchild2 }><button-right><i class="fa fa-edit" id="editroute"></i></button-right></div>
-					</div>
+						<div class={ style.grid }>
+							<div class= {style.gridchild1 }><table class={ style.table }><tr><td><div class={ style.starchecked }>
+								<span class="fa fa-star"></span></div></td></tr><tr><td>HOME</td><td>Start: E16</td></tr><tr><td>6 pm</td><td>End: SE18</td></tr></table></div>
+							<div class= {style.gridchild2 }><button-right><i class="fa fa-edit" id="editroute"></i></button-right></div>
+						</div>
 
     				<div class={ style.grid }>
     					<div class= {style.gridchild1 }><table class={ style.table }><tr><td><div class={ style.starunchecked }>

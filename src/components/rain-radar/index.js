@@ -11,7 +11,7 @@ export default class Radar extends Component {
 
     return(
 
-      <div class={ style_iphone.container }>
+      <div class={ style.routes }>
         <div class = {style_iphone.homepage}>
 
           <div class = {style.heading}>
