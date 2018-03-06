@@ -15,7 +15,6 @@ export default class Topnav extends Component {
 
     componentWillMount() {
         this.state.showError = false;
-        console.log(this.state.showError);
     }
 
     // makes a call to postcodes.io based on the postcode value inputed by the user

@@ -7,11 +7,6 @@ import style_hourly from './style.less';
 
 export default class Hourly extends Component {
 
-	constructor(props){
-		super(props);
-		this.state.fetched = false;
-	}
-
 	componentWillMount() {
 		this.setState({
 			current: this.props.current,
@@ -28,6 +23,8 @@ export default class Hourly extends Component {
 	    } else {
 	    	this.state.time = this.state.hour + "am";
 	    }
+
+	    this.parseHourlyWeather();
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -70,8 +67,6 @@ export default class Hourly extends Component {
 		this.state.winds = wind_speed + "m/s";
 		this.state.windd = wind_direction;
 		this.state.icon = cond_icon[1];
-
-		this.state.fetched = true;
 	}
 
 	parseHourlyWeather = () => {
@@ -85,8 +80,6 @@ export default class Hourly extends Component {
 		if (hour_group == 24 || hour_group == 0) {
 			hour_group = "00:00";
 		}
-
-		console.log(hour_group);
 
 		for (var i = 0; i < this.state.forecast_list.length; i++) {
 			if ((this.state.forecast_list[i]['dt_txt']).indexOf(hour_group + ":") > 0) {

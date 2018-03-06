@@ -21,7 +21,6 @@ export default class App extends Component {
 
 	constructor (props) {
     	super(props)
-    	this.state.showNav = true;
     	this.state.lon = "-0.03749985";
 		this.state.lat = "51.520497918";
     }
@@ -38,13 +37,11 @@ export default class App extends Component {
 	//A render method to display the required components on screen
 	render(){
 
-		var render_target = <Topnav updateLocation={this.updateLocation}/>;
-
 		return (
 
 			<div class = {style.container}>
 
-				{this.state.showNav ? render_target : null}
+				<Topnav updateLocation={this.updateLocation}/>
 
 				{/* External stylesheets with icons for interface elements and weather display, accessible throughout the app */}
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
