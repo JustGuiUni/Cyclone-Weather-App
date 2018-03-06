@@ -54,6 +54,14 @@ export default class Hourly extends Component {
 
     this.state.hr = hour;
     this.state.today = [day, month, dayno];
+
+    var nextDay = new Date();
+    nextDay.setDate(now.getDate()+1);
+    day = days[ nextDay.getDay() ];
+    month = months[ nextDay.getMonth() ];
+    dayno = nextDay.getDate();
+
+    this.state.tomorrow = [day, month, dayno];
   }
 
   fetchHourlyData = () => {
@@ -102,30 +110,30 @@ export default class Hourly extends Component {
           <div class={ style.homepage }>
             <div class= { style_hourly.wrapper }>
               <div> <p class = { style_hourly.location }> {this.state.locate} </p> {this.state.today[0]}, {this.state.today[1]} {this.state.today[2]}</div>
-              <Hour hr={this.state.hr} num={0} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={1} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={2} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={3} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={4} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={5} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={6} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={7} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={8} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={9} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={10} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={11} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={12} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={13} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={14} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={15} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={16} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={17} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={18} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={19} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={20} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={21} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={22} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
-              <Hour hr={this.state.hr} num={23} current={this.state.currentJSON} hourly={this.state.forecastJSON}/>
+              <Hour hr={this.state.hr} num={0} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={1} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={2} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={3} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={4} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={5} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={6} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={7} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={8} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={9} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={10} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={11} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={12} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={13} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={14} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={15} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={16} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={17} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={18} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={19} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={20} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={21} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={22} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
+              <Hour hr={this.state.hr} num={23} current={this.state.currentJSON} hourly={this.state.forecastJSON} tomorrow={this.state.tomorrow}/>
               <div/>
             </div>
           </div>

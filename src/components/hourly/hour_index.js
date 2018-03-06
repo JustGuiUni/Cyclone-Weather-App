@@ -18,6 +18,7 @@ export default class Hourly extends Component {
 	    	this.state.time = "12pm";
 	    } else if(this.state.hour == 0) {
 	    	this.state.time = "12am";
+	    	this.state.showNextDay = true;
 	    } else if(this.state.hour >12) {
 	    	this.state.time = this.state.hour - 12 + "pm";
 	    } else {
@@ -232,16 +233,21 @@ export default class Hourly extends Component {
 
 	render() {
 
+		var nextDay = <div>{this.props.tomorrow[0]}, {this.props.tomorrow[1]} {this.props.tomorrow[2]}</div>
+
 		return(
-			<div class = { style_hourly.nested }>
-				<div>{this.state.time}</div>
-				<div><i class={ this.state.icon }/></div>
-				<div>{ this.state.cond }</div>
-				<div><i class="fa fa-thermometer"></i></div>
-				<div>{ this.state.temp }</div>
-				<div><i class="wi wi-strong-wind"></i></div>
-				<div>{ this.state.winds } { this.state.windd }</div>
-				<div></div>
+			<div>
+				{this.state.showNextDay ? nextDay : null}
+				<div class = { style_hourly.nested }>
+					<div>{this.state.time}</div>
+					<div><i class={ this.state.icon }/></div>
+					<div>{ this.state.cond }</div>
+					<div><i class="fa fa-thermometer"></i></div>
+					<div>{ this.state.temp }</div>
+					<div><i class="wi wi-strong-wind"></i></div>
+					<div>{ this.state.winds } { this.state.windd }</div>
+					<div></div>
+				</div>
 			</div>
         );
 	}
