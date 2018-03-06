@@ -23,7 +23,6 @@ export default class Hourly extends Component {
   }
 
   componentWillMount() {
-    this.props.showTopNav();
     this.setState({
       lon: this.props.lon,
       lat: this.props.lat
@@ -66,7 +65,7 @@ export default class Hourly extends Component {
       success : this.storeJSON,
       error : function(req, err){ console.log('API call failed ' + err); }
     })
-    console.log("Call Made")
+    console.log("Call Made - Weather")
     this.state.count =1;
 
     var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=d237a7f64a603e590c18e8f7479ed65c";
@@ -77,7 +76,7 @@ export default class Hourly extends Component {
       success : this.storeJSON,
       error : function(req, err){ console.log('API call failed ' + err); }
     })
-    console.log("Call Made")
+    console.log("Call Made - Forecast")
     this.state.count =0;
   }
 

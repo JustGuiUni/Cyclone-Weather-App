@@ -18,23 +18,6 @@ export default class Topnav extends Component {
         console.log(this.state.showError);
     }
 
-    // isPostcodeCheck = () =>{
- //         var postcodeRE = /([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))\s?[0-9][A-Za-z]{2})/;
- //         var postcodeChecked = postcodeRE.exec(this.state.postcodeVal);
- //         console.log("postcodeChecked: " +postcodeChecked);
- //         var isJustAPostcode = this.state.postcodeVal.replace(postcodeChecked, '');
- //         console.log("isJustAPostcode: " +isJustAPostcode);
- 
- //         if (isJustAPostcode == null) {
- //             console.log("Is a postcode");
- //             this.postcodeSearch();
- //         } else {
- //             console.log("Is a place");
- //             this.placeSearch();
- //         }
- 
- //     }
-
     // makes a call to postcodes.io based on the postcode value inputed by the user
     // parses this postcode into lat and lon values 
     postcodeSearch(){
@@ -42,7 +25,6 @@ export default class Topnav extends Component {
         var postcode = postcodeRE.exec(this.state.postcodeVal);
         
         postcode = postcode[0];
-
         console.log("postcode" + postcode);
 
         var url = "https://api.postcodes.io/postcodes/" + postcode;
