@@ -18,12 +18,6 @@ import {FetchCurrentWeather, FetchWeatherForecast} from '../../helpers.js'
 
 export default class Hourly extends Component {
 
-  // a constructor with initial set states
-  constructor(props){
-    super(props);
-    this.state.count = 0;
-  }
-
   componentWillMount() {
     this.setState({
       lon: this.props.lon,
@@ -61,26 +55,16 @@ export default class Hourly extends Component {
   fetchHourlyData = () => {
     var parsed_json = FetchCurrentWeather(this.state.lat, this.state.lon);
     console.log("Call Made - Current Weather")
-    this.storeJSON(parsed_json);
-    this.state.count = 1;
+    this.setState({
+      currentJSON: parsed_json,
+      locate: parsed_json['name']
+    })
 
     parsed_json = FetchWeatherForecast(this.state.lat, this.state.lon);
     console.log("Call Made - Forecast")
-    this.storeJSON(parsed_json);
-    this.state.count =0;
-  }
-
-  storeJSON = (json) => {
-    if(this.state.count == 0) {
-      this.setState({
-        currentJSON: json,
-        locate: json['name'],
-      })
-    } else {
-      this.setState({
-        forecastJSON: json,
-      })
-    }
+    this.setState({
+      forecastJSON: parsed_json
+    })
   }
 
   // the main render method for the routes component

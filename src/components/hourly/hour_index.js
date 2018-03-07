@@ -126,7 +126,6 @@ export default class Hourly extends Component {
 				<div>{ this.state.temp }</div>
 				<div><i class="wi wi-strong-wind"></i></div>
 				<div>{ this.state.winds } { this.state.windd }</div>
-				<div></div>
 			</div>
         );
 	}

@@ -17,7 +17,7 @@ export const FetchCurrentWeather = (lat, lon) => {
 
 export const FetchWeatherForecast = (lat, lon) => {
 	
-	var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=d237a7f64a603e590c18e8f7479ed65c";
+	var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=ddc4c459b28204945d52884ab709111a";
 	var result = "";
 	$.ajax({
 		url: url,
