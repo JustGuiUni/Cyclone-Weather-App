@@ -88,7 +88,7 @@ export default class Hourly extends Component {
 			}
 		}
 		var temp_c = Math.round((forecast['main']['temp']-273.15) * 10) / 10;
-		var wind_speed = forecast['wind']['speed'];
+		var wind_speed = Math.round(forecast['wind']['speed'] * 10) / 10;
 		var wind_direction = forecast['wind']['deg'];
 		var conditions = forecast['weather'][0]['id'];
 		var sunstate = forecast['sys']['pod'];

@@ -52,7 +52,7 @@ export default class Iphone extends Component {
 	parseResponse = (parsed_json) => {
 		var location = parsed_json['name'];
 		var temp_c = Math.round((parsed_json['main']['temp']-273.15) * 10) / 10;
-		var wind_speed = parsed_json['wind']['speed'];
+		var wind_speed = Math.round(parsed_json['wind']['speed'] * 10) / 10;
 		var wind_direction = parsed_json['wind']['deg'];
 		var conditions = parsed_json['weather'][0]['id'];
 		var sunrise = parsed_json['sys']['sunrise'];
