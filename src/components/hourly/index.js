@@ -8,11 +8,13 @@ import style from '../iphone/style.less';
 import style_hourly from './style.less';
 import style_topnav from '../topnav/style';
 
-// import jquery for API calls
-import $ from 'jquery';
+// import required components
 import Search from '../topnav/search_index';
 import Relocate from '../topnav/relocate_index';
 import Hour from './hour_index';
+
+// import helper functions for API calls
+import {FetchCurrentWeather, FetchWeatherForecast} from '../../helpers.js'
 
 export default class Hourly extends Component {
 
@@ -57,26 +59,14 @@ export default class Hourly extends Component {
   }
 
   fetchHourlyData = () => {
-    var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=d237a7f64a603e590c18e8f7479ed65c";
-    $.ajax({
-      url: url,
-      dataType: "json",
-      async: false,
-      success : this.storeJSON,
-      error : function(req, err){ console.log('API call failed ' + err); }
-    })
-    console.log("Call Made - Weather")
-    this.state.count =1;
+    var parsed_json = FetchCurrentWeather(this.state.lat, this.state.lon);
+    console.log("Call Made - Current Weather")
+    this.storeJSON(parsed_json);
+    this.state.count = 1;
 
-    var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + this.state.lat + "&lon=" + this.state.lon + "&appid=d237a7f64a603e590c18e8f7479ed65c";
-    $.ajax({
-      url: url,
-      dataType: "json",
-      async: false,
-      success : this.storeJSON,
-      error : function(req, err){ console.log('API call failed ' + err); }
-    })
+    parsed_json = FetchWeatherForecast(this.state.lat, this.state.lon);
     console.log("Call Made - Forecast")
+    this.storeJSON(parsed_json);
     this.state.count =0;
   }
 
