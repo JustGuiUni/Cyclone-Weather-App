@@ -7,15 +7,19 @@ High fidelity prototype for the mobile weather app "Cyclone", built with Preact.
 The prototype comprises four pages: home, hourly, routes, and radar. 
 
 *Home*
+
 Displays the current weather at a saved home location. Supports user search for weather at locations within the UK. Also display forecast for start/end points of saved routes.
 
 *Hourly*
+
 24-hour forecast for the location currently displayed on the home page. Also supports user search.
 
 *Route*
+
 Placeholder page visualising the route management system. Envisages functionality to save routes and update favourites to display on the home page.
 
 *Radar*
+
 Placeholder page visualising rain radar system, a priority according to our stakeholders.
 
 ## Set-Up Guide
