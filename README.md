@@ -19,8 +19,6 @@ Placeholder page visualising the route management system. Envisages functionalit
 Placeholder page visualising rain radar system, a priority according to our stakeholders.
 
 ## Set-Up Guide
-- [Installation](#installation)
-- [Development Workflow](#development-workflow)
 
 **0. Install latest versions of node and npm (npm v: 4.0.5 & node v: 7.4.0) :**
 
@@ -41,7 +39,7 @@ cd weather-app
 rm -rf .git && git init && npm init
 ```
 
-> :information_source: Command above re-initializes the repo and sets up NPM project on your local machine.
+> Command above re-initializes the repo and sets up NPM project on your local machine.
 
 
 **3. Install the dependencies :**
